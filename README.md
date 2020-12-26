@@ -9,3 +9,24 @@
 2. Unsupervised Part-based Weighting Aggregation of Deep Convolutional Features for Image Retrieval
 3. ATTENTION-AWARE AGE-AGNOSTIC VISUAL PLACE RECOGNITION
 4. Deep Attentional Structured Representation Learning for Visual Recognition (Some regions provide more discriminative information)
+
+
+# Semi-supervised learning
+1. Consistency-based: FixMatch and ReMixMatch
+2. Graph-based (label propagation or use mean-teacher to obtain more reliable feature to construct graph):
+   a. Low-shot learning with large-scale diffusion
+   b. Transductive Semi-Supervised Deep Learning using Min-Max Features
+   c. Label propagation for deep semi-supervised learning
+   d. Smooth Neighbors on Teacher Graphs for Semi-supervised Learning
+   
+# Noise label learning
+1. A Simple yet Effective Baseline for Robust Deep Learning with Noisy Labels 
+   Relation to semi-supervised learning: noise label will hurt training while unlabeled data will not
+   Relation to deep kernel learning: Minimizing the predictive variance can be explained in the framework of posterior regularization, which lead to the solution to be of some specific form. Training samples are far from the decision boundaries and tend to cluster together.
+   
+2. Bootstrap-hard:  a self-learning technique that use a convex combination of the given label and model prediction as the training target.
+3. Forward-correction:  a loss correction method based on the noise transition matrix Tˆ estimated by a pre-trained network
+4. Generalized Cross Entropy: noise-robust loss function
+5. Co-teaching: maintains two networks simultaneously, and cross-trains on instances screened by the “small loss” criteria.
+6. MentorNet: a meta-learning model that assigns different weights of training examples based on metalearned curriculum with clean validation dataset.
+7. Learning to Reweight: reweight the samples based on clean validation set.
