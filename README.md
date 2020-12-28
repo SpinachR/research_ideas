@@ -32,16 +32,27 @@
 # Semi-supervised learning
 1. Consistency-based: ReMixMatch (distribution alignment: prevent the model's prediction from collapsing) and FixMatch (new sota: use weakly-augmented samples to produce pseudo-labels whose largest class probability are above a threshold and train the model on strongly-augmented samples)
 2. Graph-based (label propagation or use mean-teacher to obtain more reliable feature to construct graph):
+
    a. Low-shot learning with large-scale diffusion
+   
    b. Transductive Semi-Supervised Deep Learning using Min-Max Features
+   
    c. Label propagation for deep semi-supervised learning
+   
    d. Smooth Neighbors on Teacher Graphs for Semi-supervised Learning
+   
    e. Data-efficient semi-supervised learning by reliable edge mining
+   
 3. CoMatch (Contrastive Graph Regularization, jointly learning class probabilities from classification head and image representations from self-supervised learning head): unify consistency regularization, entropy minimization, contrastive learning, graph-based SSL.
+
    a. Pseudo-labeling heavily rely on the quality of model's prediction, where the prediction mistakes would accumulate.
+   
    b. Self-supervised learning are task-agnostic, the representations may be suboptimal.
+   
    c. Previous graph-based methods built graph on the features which are highly-correlated with the class predictions; due to high dimensionality, Euclidean distance becomes less meaningful (CoMatch considers the relative distance); Computation cost is high.
+   
    d. In CoMatch, the self-supervised branch and classification branch are collaborative with each other, rather than separated parts used in many multi-tasks learning.
+   
    e. Procedure: first, use weakly-augmentations to produce pseudo-graph, then use the pseudo-graph as target to training the embedding graph, which measures the similarity of strongly-augmented samples in the embedding space.
 
    
@@ -52,8 +63,11 @@
    
 # Noise label learning
 1. A Simple yet Effective Baseline for Robust Deep Learning with Noisy Labels 
+
    Relation to semi-supervised learning: noise label will hurt training while unlabeled data will not
+   
    Relation to deep kernel learning: Minimizing the predictive variance can be explained in the framework of posterior regularization, which lead to the solution to be of some specific form. Training samples are far from the decision boundaries and tend to cluster together.
+   
    Local intrinsic dimensionality (LID) of adversarial example is significantly higher than that of normal data. Ref: Characterizing adversarial subspaces using local intrinsic dimensionality
    
 2. Bootstrap-hard:  a self-learning technique that use a convex combination of the given label y and model prediction y_hat as the training target.
@@ -73,12 +87,25 @@
 16. Can gradient clipping mitigate label noise.
     Informally, clipping controls the dynamics of iterates, thus enhancing the rate of convergence to a local minimum. (Capping the global gradient norm at a specified threshold). 
     From optimisation lens: By ensuring that the gradient norm is not too large, the dynamics of iterates are more well-behaved.
+    
     From privacy lens: it prevents any single instance from overly influencing parameter updates.
+    
     In this paper, we study gradient clipping from *robustness* lens. Intuitively, clipping the gradient prevents over-confident descent steps.
+    
     a. gradient clipping alone does NOT endow label noise robustness.
+    
     b. The composite loss-based gradient clippling, a variant that have label noise robustness. ONLY clip the contribution of the *base loss*, being partially Huberised loss.
+    
 17. CURRICULUM LOSS: ROBUST LEARNING AND GENERALIZATION AGAINST LABEL CORRUPTION
+    This paper proposes and analyzes two simple and intuitive regularization methods, the generalization bound is independent of the network size, and the comparable to the bound one can tget when there is no label noise.
+    a. regularization by the distance between the network parameters to initialization.
+    b. adding a trainable auxiliary variable to the network output for each training example.
+    
+    
+    
+    
 18. SIMPLE AND EFFECTIVE REGULARIZATION METHODS FOR TRAINING ON NOISILY LABELED DATA WITH GENERALIZATION GUARANTEE
+    
 19. Using Pre-Training Can Improve Model Robustness and Uncertainty
 20. Learning from Noisy Labels with Distillation
 21. Learning from noisy large-scale datasets with minimal supervision
