@@ -69,8 +69,14 @@
 12. A Novel Self-Supervised Re-labeling: self-supervision to generate robust features; using a parallel network to re-label the noise data.
 13. SELF: Learning to filter noisy labels with self-ensemble. Filter noise samples with moving average networks (the average prediction is not consistent with the given label BEFORE over-fitting to the dataset), the filtered samples will be used as unlabeled samples in semi-supervised learning.
 14. DivideMix: Learning with noisy labels as semi-supervised learning. Use GMM on per-sample loss to filter noise data as unlabeled data. Next, use MixMatch/co-refinement/co-guessing to train network.
-15. Confident Learning: Estimating Uncertainty in Dataset Labels
-16. CAN GRADIENT CLIPPING MITIGATE LABEL NOISE
+15. Confident Learning: Estimating Uncertainty in Dataset Labels  
+16. Can gradient clipping mitigate label noise.
+    Informally, clipping controls the dynamics of iterates, thus enhancing the rate of convergence to a local minimum. (Capping the global gradient norm at a specified threshold). 
+    From optimisation lens: By ensuring that the gradient norm is not too large, the dynamics of iterates are more well-behaved.
+    From privacy lens: it prevents any single instance from overly influencing parameter updates.
+    In this paper, we study gradient clipping from *robustness* lens. Intuitively, clipping the gradient prevents over-confident descent steps.
+    a. gradient clipping alone does NOT endow label noise robustness.
+    b. The composite loss-based gradient clippling, a variant that have label noise robustness. ONLY clip the contribution of the *base loss*, being partially Huberised loss.
 17. CURRICULUM LOSS: ROBUST LEARNING AND GENERALIZATION AGAINST LABEL CORRUPTION
 18. SIMPLE AND EFFECTIVE REGULARIZATION METHODS FOR TRAINING ON NOISILY LABELED DATA WITH GENERALIZATION GUARANTEE
 19. Using Pre-Training Can Improve Model Robustness and Uncertainty
@@ -80,3 +86,4 @@
 23. Gradient regularization improves accuracy of discrimative models
 24. Robust learning with jacobian regularization
 25. CleanNet: Transfer learning for scalable image classification training with label noise
+26. Symmetric Cross Entropy for Robust Learning with Noisy Labels
