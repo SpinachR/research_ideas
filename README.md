@@ -136,10 +136,10 @@
     
 28. Combating Noisy Labels by Agreement: A Joint Training Method with Co-Regularization.
 
-    'Decoupling' and 'Co-teaching+' claim that the 'disagreement' strategy is crucial for alleviating the problem of learning with noisy labels.    
-    Differences between 'co-teaching' and 'co-training': co-training uses two different views; co-training did not use the memorization property of DNN (the small loss for one network may be large for the other network).
+    'Decoupling' and 'Co-teaching+' claim that the 'disagreement' strategy is crucial for alleviating the problem of learning with noisy labels.      
+    Differences between 'co-teaching' and 'co-training': co-training uses two different views; co-training did not use the memorization property of DNN (the small loss for one network may be large for the other network).   
     
-    a. Decoupling: select not consistent samples to update networks. Update by disagreement: S={(x,y): h1(x) != h2(x)}, update h1 with S and update h2 with S. Similar to hard-mining? Only hard mining is not enough.
-    b. Coteaching: use one network to select 'small-loss' samples to update the other network, and vice versa.
-    c. Coteaching+: 'Coteaching+Decoupling' since coteaching will make two prediction closer with the epochs increasing.
+    a. Decoupling: select not consistent samples to update networks. Update by disagreement: S={(x,y): h1(x) != h2(x)}, update h1 with S and update h2 with S. Similar to hard-mining? Only hard mining is not enough.    
+    b. Coteaching: use one network to select 'small-loss' samples to update the other network, and vice versa.    
+    c. Coteaching+: 'Coteaching+Decoupling' since coteaching will make two prediction closer with the epochs increasing.     
 
