@@ -8,4 +8,4 @@
 
 5. Update by disagreement for ensemble, for semi-supervised learning or DA. To increase the divergence. Two diverged networks have different abilities to filter different types of error. The optimal peer should be complementary, rather than the consistent. Two students are good at math, one student is good at math and the other one is good at literature.
 
-6. 
+6. Noisy face or Noisy re-id
