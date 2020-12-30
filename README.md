@@ -18,8 +18,14 @@
 
 
 # Domain adaptation
-1. GradMix: Multi-source Transfer across Domains and Tasks
-2. Cluster Alignment with a Teacher for Unsupervised Domain Adaptation
+1. GradMix: Multi-source Transfer across Domains and Tasks   
+2. Cluster Alignment with a Teacher for Unsupervised Domain Adaptation   
+   Cluster alignment with a teacher can effectively incorporate the discriminative clustering structures in both domains for better adaptation.     
+   CAT leverages a teacher model to reliably discover the class-conditional structure in the feature space. Then, it forces the features of both the source and the target domains to form discriminative class-conditional clusters and aligns the corresponding clusters across domains.      
+   a. Discover the class-conditional structures in feature space and reshape them to be discriminative clusters. Source domain is ok since we have labels, target domain is completed by pseudo labels obtained by ensembled models. Clustering-loss: two features belongs to the same clusters should be close, different class features should be far apart (a hinge loss) SNTG loss -- teacher graph, gathering low-dimensional feature mapping.     
+   b. Cluster alignment via conditional feature matching: the source features and target features belong to the same class should be similar, similar to feature matching.     
+   c. Combining CAT with marginal distributional alignment, i.e., DANN or RevGrad
+   
 3. FixBi: Bridging Domain Spaces for Unsupervised Domain Adaptation
 
 # Distillation
@@ -82,7 +88,7 @@
 11. O2U-Net: adjust hyperparameters (learning rate) from Overfitting to Underfitting. The noise labels are usually memorized at the late stage of training as the "hard" samples. Therefore, by tracking the variation of loss of very sample at the different stages, it is possible to detect noise labels.
 12. A Novel Self-Supervised Re-labeling: self-supervision to generate robust features; using a parallel network to re-label the noise data.
 13. SELF: Learning to filter noisy labels with self-ensemble. Filter noise samples with moving average networks (the average prediction is not consistent with the given label BEFORE over-fitting to the dataset), the filtered samples will be used as unlabeled samples in semi-supervised learning.
-14. DivideMix: Learning with noisy labels as semi-supervised learning. Use GMM on per-sample loss to filter noise data as unlabeled data. Next, use MixMatch/co-refinement/co-guessing to train network.
+14. DivideMix: Learning with noisy labels as semi-supervised learning. Use GMM on per-sample loss to filter noise data as unlabeled data. Next, use MixMatch/co-refinement/co-guessing to train network.  
 15. Confident Learning: Estimating Uncertainty in Dataset Labels  
 16. Can gradient clipping mitigate label noise.
     Informally, clipping controls the dynamics of iterates, thus enhancing the rate of convergence to a local minimum. (Capping the global gradient norm at a specified threshold). 
@@ -112,21 +118,28 @@
     
     In this line of work (wide neural net and neural tangent kernel), parameters in a wide NN are shown to stay close to their initialization during SGD.
     
-19. Using Pre-Training Can Improve Model Robustness and Uncertainty
-20. Learning from Noisy Labels with Distillation
+19. Learning to Learn from Noisy Labeled Data.     
+    A meta-learning update is performed prior to conventional gradient update. Meta-learning based noise-tolerant training to learn from noisy labeled data without human supervision or access to any clean labels. Rather than designing a specific model, we propose a model-agnositc training algorithm.     
+    The key idea is *a noise-tolerant model should be able to consistently learn the underlying knowledge from data despite different label noise.*     
+    Meta-learning: learning update rule of a learner; finding weight initializations that can be easily fine-tuned or transferred. MAML trains model parameters that can learn well based on a few examples and a few gradient descent steps.     
+    
+    For SGD, some network parameters are more tolerant to label noise than others.    
+    a. for each mini-batch, we generate a variety of synthetic noisy labels on the same images, we update the network parameters using one gradient update.     
+    b. Then, we enforce the updated network to give consistent predictions with a teacher model unaffected by the synthetic noise.
+    
+20. Learning from Noisy Labels with Distillation     
+    Use an auxiliary model (trained on small clean dataset as guidance), or use distillation guided by knowledge graph.    
+    
 21. Learning from noisy large-scale datasets with minimal supervision
 22. Learning with Bad Training Data via Iterative Trimmed Loss Minimization
     
     It is useful in poorly curated datasets, irrelevant samples (out-of-distribution), as well as backdoor attacks.
     
     Based on the observations: the evolution of training accuracy is different for clean and bad samples. Repeat (a) selecting samples with lowest current loss. (b) retraining a model on only these samples.
-    
-    
-    
 
 23. Gradient regularization improves accuracy of discrimative models
 24. Robust learning with jacobian regularization
-25. CleanNet: Transfer learning for scalable image classification training with label noise
+25. CleanNet: Transfer learning for scalable image classification training with label noise: use one 'prototype' or 'representative sample' to represent one class, use this prototype to identify if it is noise or not.    
 26. Symmetric Cross Entropy for Robust Learning with Noisy Labels     
     DNN with cross entropy exhibits overfitting to noisy labels on some 'easy' classes, while suffers on some other 'hard' classes. **class-biased: some classes overfitting, some class underfitting**. In addition, a low test accuracy (underfitting) on hard classes is a barrier to high overall accuracy (poor performance is not only caused by overfitting).       
     Dimensionality-driven: DNN first learns simple representation via dimensionality compression and then overfit to noise labels via dimensionality expansion.       
@@ -148,5 +161,17 @@
     b. Coteaching: use one network to select 'small-loss' samples to update the other network, and vice versa.    
     c. Coteaching+: 'Coteaching+Decoupling' since coteaching will make two prediction closer with the epochs increasing. (How does Disagreement Help Generalization against Label Corruption?)   
 
-29.     
+29. Using Pre-Training Can Improve Model Robustness and Uncertainty    
+    Pre-training may not improve performance on traditional classification metrics, it improves model robustness and uncertainty estimates. Some researchers claims that the pre-training only imporves wall-clock time.    
+    a. Pre-training does tremendously improve the model's adversarial robustness.     
+    b. Training longer on a corrupted dataset leads to model deterioration, while for pre-trained model, this is not the case.    
+    c. Pre-training can reduce overfitting in case of model calibration, rather than model accuracy.     
+    
+    Uncertainty estimates need to be useful for detecting out-of-distribution samples.    
+
+30. Label-Noise Robust Generative Adversarial Networks. Noisy learning in the generative model.   
+31. Robustness of Conditional GANs to Noisy Labels    
+
+
+    
     
