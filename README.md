@@ -127,7 +127,12 @@
 23. Gradient regularization improves accuracy of discrimative models
 24. Robust learning with jacobian regularization
 25. CleanNet: Transfer learning for scalable image classification training with label noise
-26. Symmetric Cross Entropy for Robust Learning with Noisy Labels
+26. Symmetric Cross Entropy for Robust Learning with Noisy Labels     
+    DNN with cross entropy exhibits overfitting to noisy labels on some 'easy' classes, while suffers on some other 'hard' classes. **class-biased: some classes overfitting, some class underfitting**. In addition, a low test accuracy (underfitting) on hard classes is a barrier to high overall accuracy (poor performance is not only caused by overfitting).       
+    Dimensionality-driven: DNN first learns simple representation via dimensionality compression and then overfit to noise labels via dimensionality expansion.       
+    CE by itself is not sufficient for learning of hard classes, especially under the noisy label scenario. Underfitting on hard classes is a major cause for overall performance degradation, due to the fact that the accuracy drop caused by overfitting is relatively small.     
+    Symmetric Cross Entropy (SCE) = H(q, p) + H(p, q). Use the predictions as labels: Reverse Cross Entropy.
+    
 27. Robust training with ensemble consensus (sampling trainable examples from a noisy dataset by relying on small-loss criteria might be impractical)
 
     *DNN can not generalize to __neighborhoods__ of memorized features*, we hypothesize that noisy examples do not consistently incur small losses on the network under a certain perturbation. Training losses of noisy examples would increase by injecting certain perturbation to network parameters, while those of clean examples would not.
@@ -136,10 +141,12 @@
     
 28. Combating Noisy Labels by Agreement: A Joint Training Method with Co-Regularization.
 
-    'Decoupling' and 'Co-teaching+' claim that the 'disagreement' strategy is crucial for alleviating the problem of learning with noisy labels.      
+    'Decoupling' and 'Co-teaching+' claim that the 'disagreement' strategy is crucial for alleviating the problem of learning with noisy labels.     
     Differences between 'co-teaching' and 'co-training': co-training uses two different views; co-training did not use the memorization property of DNN (the small loss for one network may be large for the other network).   
     
     a. Decoupling: select not consistent samples to update networks. Update by disagreement: S={(x,y): h1(x) != h2(x)}, update h1 with S and update h2 with S. Similar to hard-mining? Only hard mining is not enough.    
     b. Coteaching: use one network to select 'small-loss' samples to update the other network, and vice versa.    
-    c. Coteaching+: 'Coteaching+Decoupling' since coteaching will make two prediction closer with the epochs increasing.     
+    c. Coteaching+: 'Coteaching+Decoupling' since coteaching will make two prediction closer with the epochs increasing. (How does Disagreement Help Generalization against Label Corruption?)   
 
+29.     
+    
