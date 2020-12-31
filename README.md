@@ -26,10 +26,13 @@
    b. Cluster alignment via conditional feature matching: the source features and target features belong to the same class should be similar, similar to feature matching.     
    c. Combining CAT with marginal distributional alignment, i.e., DANN or RevGrad
    
+   Thanks to the classconditional discriminative alignment between the source and target domains, CAT outperforms MCD and VADA.   
+   Office31 is more realistic and high-dimensional images, providing a good complement to the digits adaptation task.
+   
 3. FixBi: Bridging Domain Spaces for Unsupervised Domain Adaptation
 
 # Distillation
-1. 
+1. Data Distillation: Towards Omni-Supervised Learning. 
 
 # Fine-grainded recognition
 1. Local Temporal Bilinear Pooling for Fine-Grained Action Parsing. https://medium.com/syncedreview/local-temporal-bilinear-pooling-for-fine-grained-action-parsing-24a9bdcc1355
