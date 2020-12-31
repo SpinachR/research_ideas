@@ -15,3 +15,5 @@
 8. DA with prototypes. Compared with pseudo labels, class prototypes are more accurate and reliable since they are summarized over all the instances. 'Prototype-Assisted Adversarial learning for UDA'. Prototype discriminator. Minimize the variance of the latent representations for each class in the target domain. 'Transferrable Prototypical Networks for Unsupervised Domain Adaptation'
 
 9. Semi-supervised Segmentation. CutMix (needs strong varied perturbations), ClassMix (Segmentation-based data augmentation), s4GAN_MLMT.
+
+10. U square net for better translation results
