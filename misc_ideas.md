@@ -18,4 +18,4 @@
 
 10. U square net for better translation results
 
-12. Data augmentation tricks: *Cutout*, *CutMix*, *Hide-and-Seek*, *GridMask Data Augmentation*, style-ImageNet. [link](https://www.cnblogs.com/super-zheng/p/13268074.html)
+12. Data augmentation tricks: *Cutout*, *CutMix*, *Hide-and-Seek*, *GridMask Data Augmentation*, style-ImageNet. [link](https://www.cnblogs.com/super-zheng/p/13268074.html) [more augmentation tricks in YOLO4](https://towardsdatascience.com/data-augmentation-in-yolov4-c16bd22b2617)
