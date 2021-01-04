@@ -17,3 +17,5 @@
 9. Semi-supervised Segmentation. CutMix (needs strong varied perturbations), ClassMix (Segmentation-based data augmentation), s4GAN_MLMT.
 
 10. U square net for better translation results
+
+12. Data augmentation tricks: *Hide-and-Seek*, *GridMask Data Augmentation*, style-ImageNet. [link](https://www.cnblogs.com/super-zheng/p/13268074.html)
