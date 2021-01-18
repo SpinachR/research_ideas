@@ -29,7 +29,48 @@
    Thanks to the classconditional discriminative alignment between the source and target domains, CAT outperforms MCD and VADA.   
    Office31 is more realistic and high-dimensional images, providing a good complement to the digits adaptation task.
    
-3. FixBi: Bridging Domain Spaces for Unsupervised Domain Adaptation
+3. FixBi: Bridging Domain Spaces for Unsupervised Domain Adaptation    
+4. Larger Norm More Transferable: an adaptive feature norm.    
+   Erratic discrimination of the target domain mainly stems from its much smaller feature norms.    
+   
+5. Unsupervised Domain Adaptation in the Absence of Source Data (Roshni Sahoo): outperforms fine-tuning with LIMITED labeled data. Find a transformation that maximize the difference, update classifier to minimize their difference. Like MCD.
+
+6. Domain2Vec: a technique to measure domain similarity
+
+7. Deep Co-Training with Task Decomposition for *Semi-Supervised Domain Adaptation*: two tasks (semi-supervised learning + unsupervised domain adaptation)
+
+
+# Style Transfer
+1. StyleBank: An Explicit Representation for Neural Image Style Transfer. (The features from content image can be clustered based on K-means, similar to segmentation results. This result can be used for REGULARIZATION or specific region transfer)    
+2. Deep Painterly Harmonization: Copying an element from a photo and pasting it into a painting.   
+3. Deep Photo Style Transfer: Neural style algorithm can transfer colors, but introduces distortions that make the output like a painting, which is undesirable in the context of PHOTO STYLE Transfer.  
+
+
+
+# Object detection
+1. Gradient Harmonized Single-stage Detector: deal with imbalanced samples based on gradient.
+
+
+
+# Semantic segmentation
+1. BUDA: Boundless Unsupervised Domain Adaptation in Semantic Segmentation (instead of predicting never-seen classes as 'unknown' in open-set problem, BUDA aims to recognize never-seen classes based on zero-shot learning). Zero-shot learning recognizes unseen classes based on their semantic associations with seen classes.    
+2. Multichannel Semantic Segmentation with Unsupervised Domain Adaptation: using RGB + Depth + Instance Boundary for adaptation.    
+3. ColorMapGAN for map segmentation (maybe useful when data are scarce): the generator does not perform any convolution or pooling operations, it transform the colors with only one element-wise matrix multiplication and one matrix addition. Spectral distribution is similar.   
+4. Feature to Adapt (https://github.com/omerlandau/FeatureToAdapt): regularizing backbone's features to have larger L2 norm.   
+5. Consistency regularization with high-dimensional non-adversarial source-guided perturbation.   
+6. FDA - Fourier Domain Adaptation. Apply FFT to source and target images, replace the low frequency part of the source amplitude with that from the target. NO DEEP NETWORKS for style transfer. This work has a good examples for self-training.    
+7. Domain Adaptation for Semantic Segmentation with Maximum Squares Loss: the gradient of entropy is biased towards samples that are easy to transfer. To balance the gradient of well-classified target samples, we propose the maximum squares loss. Besides, we introduce the image-wise weighting ratio to alleviate the class imbalance.    
+8. Taking a closer look at domain shift: the weights of each class is obtained by the discriminator.   
+9. ADVENT - adversarial entropy minimization: based on the entropy of the pixel-wise predictions.
+   Model tends to produce over-confident predictions (like border) on source-like images and under-confident predictions (very noisy) on target-like ones. Therefore, enforcing high prediction certainty on target predictions as well:
+   - direct entropy minimization. (independent pixel-wise prediction) Training on the 'hard' or 'most-confused' pixels produces better performance. No selection.
+   - indirect entropy minimization using an adversarial loss. (aims at globally matching by weighted self-information, based on that fact the source and target domain share strong similarities in semantic layout)
+   - Noted label statistics from source domain should be considered.
+   - It is also useful for object detection with single-shot multibox detector. **GOOD WORK**
+   
+10. DADA - Depth-Aware Domain Adaptation in Semantic Segmentation. 
+   
+
 
 # Distillation
 1. Data Distillation: Towards Omni-Supervised Learning. 
