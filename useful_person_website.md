@@ -12,3 +12,5 @@
 
 # Websites
 1. NVIDIA Research Projects [github](https://github.com/NVlabs)
+
+2. NVIDIA ModelZOO Segmentation [zoo](https://modelzoo.co/model/nvidiasemantic-segmentation)
