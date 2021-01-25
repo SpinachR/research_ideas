@@ -93,11 +93,25 @@
    - It is also useful for object detection with single-shot multibox detector. **GOOD WORK**
    
 10. DADA - Depth-Aware Domain Adaptation in Semantic Segmentation. 
+11. Self-Ensembling with GAN-based Data Augmentation: heavily-tuned manual data augmentation used in self-ensembling is not useful to reduce the large domain gap in the semantic segmentation. GAN augmentation + self-ensembling.    
+    Cycle-consistency has two limitations: needs redundant modules; too strong when target data are scarce.   
+    Cycle-free data augmentation: Xg = G(Xs, Xt)  Xt provide style information based on Adaptive Instance Normalization with semantic constraint.   
+    Self-ensembling: EMA, mean square loss for the probability maps which is after the softmax layer. Gaussian noise + Network perturbation.
    
 
 
-# Distillation
+# Distillation or self-training
 1. Data Distillation: Towards Omni-Supervised Learning. 
+2. Lessons from building acoustic models with a million hours of speech  
+3. Automatic adaptation of object detectors to new domains using self-training  
+4. Are labels required for improving adversarial robustness? 
+5. Learning to self-train for semi-supervised few-shot classification  
+6. Ensemble, distill, and fuse for easy video labeling
+
+
+# Training or Architecture Improvement
+1. Fixing the train-test resolution discrepancy  
+2. Making Convolutional Networks Shift-Invariant Again
 
 # Fine-grainded recognition
 1. Local Temporal Bilinear Pooling for Fine-Grained Action Parsing. https://medium.com/syncedreview/local-temporal-bilinear-pooling-for-fine-grained-action-parsing-24a9bdcc1355
