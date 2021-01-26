@@ -21,7 +21,10 @@
    
 
 8. Semantic image synthesis with spatially-adaptive normalization  
-   Semantic layout as input is suboptimal as the normalization layers tend to 'wash away' semantic information. Therefore, we propose to use the layout for modulating the activations in normalization layers through a spatially-adaptive learned transformation
+   Semantic layout as input is suboptimal as the normalization layers tend to 'wash away' semantic information. Therefore, we propose to use the layout for modulating the activations in normalization layers through a spatially-adaptive learned transformation.    
+   The semantic is controlled via a label map, the style is controlled via the reference style image. Spatially-adaptive normalization is a conditional normalization layer that modulates the activations using input semantic layouts through a spatially-adaptive transformation.   
+   For style transfer tasks, the affine parameters are used to control the global style of the output, and hence are uniform across spatial coordinates. The proposed normalization layer applies a spatially-varying affine transformation, masking it suitable for image synthesis from semantic masks.    
+   Spatially-Adaptive DEnormalization: uses external data to denormalize the normalized activations, i.e., conditional to style images. With the SPADE, there is no need to feed the segmentation map to the first layer of the generator. The encoder can be omitted, which results in a more lightweight network. Input is noise.
 
 9. Conditional Image-to-Image Translation: assume the image inderits some domain-specific features and domain-independent features   
 10. Semi-parametric Image Synthesis: combines the complementary strengths of parametric and non parametric techniques.
