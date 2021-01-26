@@ -14,3 +14,5 @@
 1. NVIDIA Research Projects [github](https://github.com/NVlabs)
 
 2. NVIDIA ModelZOO Segmentation [zoo](https://modelzoo.co/model/nvidiasemantic-segmentation)
+
+3. PyTorchSeg [github](https://github.com/meetshah1995/pytorch-semseg)
