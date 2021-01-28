@@ -20,7 +20,7 @@
    Also need (x, I, F(I))
    
 
-8. Semantic image synthesis with spatially-adaptive normalization  
+8. Semantic image synthesis with spatially-adaptive normalization (**SPADE**)    
    Semantic layout as input is suboptimal as the normalization layers tend to 'wash away' semantic information. Therefore, we propose to use the layout for modulating the activations in normalization layers through a spatially-adaptive learned transformation.    
    The semantic is controlled via a label map, the style is controlled via the reference style image. Spatially-adaptive normalization is a conditional normalization layer that modulates the activations using input semantic layouts through a spatially-adaptive transformation.   
    For style transfer tasks, the affine parameters are used to control the global style of the output, and hence are uniform across spatial coordinates. The proposed normalization layer applies a spatially-varying affine transformation, masking it suitable for image synthesis from semantic masks.    
@@ -28,6 +28,13 @@
 
 9. Conditional Image-to-Image Translation: assume the image inderits some domain-specific features and domain-independent features   
 10. Semi-parametric Image Synthesis: combines the complementary strengths of parametric and non parametric techniques.
+
+11. Image Synthesis with Semantic Region-Adaptive Normalization (**SEAN normalization**)    
+    Control the layout of the generated image using a segmentation mask that has labels for each semantic region and 'add' realistic styles to each region according to their labels. SPADE does not allow using a different style input image for each region individually, SEAN accepts one style image per region (or per region instance) as input.     
+    Inserting style information only in the beginning of a network is not a good architecture choice. Higher quality results can be obtained if style information is injected as normalization parameters in multiple layers in the network.   
+    The spatially varying normalization parameters are dependent on the segmentation mask as well as the style input images.  
+    Style can be encoded in three places: 1) statistics of image features; 2) neural network weights; 3) parameters of a network normalization layers.
+    Need input both segmentation maps and style images. They won't be paired.
    
 
 # Multi-label classification
@@ -64,6 +71,10 @@
 7. Deep Co-Training with Task Decomposition for *Semi-Supervised Domain Adaptation*: two tasks (semi-supervised learning + unsupervised domain adaptation)
 
 8. Catastrophic Forgetting Meets Negative Transfer: Batch Spectral Shrinkage. Minimizing the spectral norm of transferable features
+
+9. Learning multiple visual domains with residual adapters: __Multiple domains VGG group__, sharing the same backbone but adding some specific residual connections for the different domains. This is some related with lifelong learning without forgetting, and it can deal with very differnt tasks. Check domain-guided dropout.
+
+10. Efficient parametrization of multi-domain deep neural networks: it shows that it is necessary to adapt both shallow and deep layers of a deep network, but required changes are very small. We also show that these universal parametrization are very effective for transfer learning.
 
 
 # Style Transfer
