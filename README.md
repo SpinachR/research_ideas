@@ -125,6 +125,27 @@
     The pseudo-label are treated as discrete learnable latent variables being either one-hot or all-zero (not selected one). For each class k, lambda_k is determinied by the confidence value selecting the most confident p protion of class k predictions in the entire target set.   
     The label regularizer is related to model and pseudo labels
    
+15. Unsupervised Scene Adaptation with Memory Regularization in vivo   
+    Existing methods focus on minoring the inter-domain gap between source and target domains. However, the intra-domain knowledge and inherent uncertainty learned by the network are under-explored.   
+    Memory regularization: segmentation model as the memory module and minor the discrepancy of the two classifiers (primary classifier and the auxiliary classifier), to reduce the prediction inconsistency.   
+    Using the auxiliary classifier to pinpoint the intra-domain uncertainty. The predictions of the source domain input are relatively consistent, the unlabeled input from the target domain suffers from the uncertain prediction. The model provides different class predictions for the same pixel, implies the intra-domain consistency is under-explored.
+    **Consistency loss three formats:** 1) perturbation on the input (data augmentation); 2) perturbation on the output (mutual learning); 3) perturbation on the networks (dropput, noise to weights and gradient, or *auxiliary heads*): we could not provide a right class prediction, it is more likely to act as a teacher providing the class distribution based on the historical experience.    
+    Domain adaptation can be conducted on different levels, such as pixel level, feature level and semantic level. The brute-force alignment drives the model to learn the domain agnostic shared features of both domains. This line is sub-optimal since it ignores the domain-specific feature learning on the target domain (FOCUS on the target domain)  
+    **Memory-based methods:** 1) MA-DNN applies an extra memory module to save the class prediction while training. 2) Mean teacher and mutual learning: apply one external model to memorize predictions and regularize the training. 3) We leverage the running network itself as the memory model.
+    Mining the target domain knowledge: pseudo-label (select samples based on prediction model or discriminator), consistency loss, split the target domain into easy and hard split.   
+    The pseudo labels contain noise, the consistency regularization could prevent the model from overfitting to the noise in pseudo labels. In stage I: domain-agnostic learning; In stage II: domain-specific learning. Compared to CBST, we do not introduce any threshold.
+    
+16. An Adversarial Perturbation Oriented Domain Adaptation Approach for Semantic Segmentation   
+    Aligning the distribution across two domains globally fails in adapting the representations of the tail classes or small objects since the alignment is dominated by head categories or large objects.   
+    We propose to perturb the intermediate feature maps with several attack objectives on each individual position for both domains, the classifier is trained to be invariant to the perturbations. Perform perturbation on feature space. To avoid forgetting knowledge from past environments, we introduce a memory that stores feature statistics from previously seen domains. These statistics can be used to replay images in any of the previously domains, thus preventing catastrophic forgetting.
+    
+17. Adapting to Changing Environments for Semantic Segmentation (ACE): dynamically adapts to changing environments over time. By aligning the distribution of labeled training data from the original domain with the distribution of incoming data in the target domain. (This is lift-long learning)   
+    'lifelong learning' is non-trivial for DNN as 1) new data domains come in at real time without labels; and 2) deep networks suffer from catastrophic forgetting. We consider adapting the pre-trained model to dynamically changing environments whose distributions reflect disparate lighting and weather conditions. We consider the difficulties posed by learning over time, in which target environments appear sequentially.   
+    Instead of using GAN, ACE saves a memory bank (feature statistics) which can transfer the contents of image from source task but in the style of a target task. Style transfer is achieved by renormalizing feature maps of source images so they have first- and second-order feature statistics. The light-weight memory statistics can be saved without the burden of storing a library of historical images.   
+    Encoder is vgg19 (fixed), decoder acts as an inverse for the encoder. Encoder should map the decoded image onto the features that produced it.
+
+    
+17. Domain Randomization and Pyramid Consistency - Generalization without Accessing Target Domain Data.
 
 
 # Distillation or self-training
