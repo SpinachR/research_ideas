@@ -111,6 +111,19 @@
     Cycle-consistency has two limitations: needs redundant modules; too strong when target data are scarce.   
     Cycle-free data augmentation: Xg = G(Xs, Xt)  Xt provide style information based on Adaptive Instance Normalization with semantic constraint.   
     Self-ensembling: EMA, mean square loss for the probability maps which is after the softmax layer. Gaussian noise + Network perturbation.
+    
+12. Unsupervised Intra-domain Adaptation for Semantic Segmentation through Self-Supervision  
+    Most previous works directly adapt models from the source data to the unlabeled target domain by reducing the **inter-domain gap**. These techniques do not consider the large distribution gap among the target data itself (intra-domain gap). In this work, there are two-step self-supervised domain adaptations to minimize the inter-domain and intra-domain gaps together.   
+    Intra-domain gap: some target samples are easy, while the others are difficult (which exist large domain gap). In our model, there is an entropy-based ranking system to separate target data into the easy and hard split, and using pseudo labels from the easy subdomain.   
+    It is a TwoStage-AdventNet (using entropy-based ranking to separate target domain into easy and hard splits as a new domain adaptation task). Rank score is computed by the sum of entropy mapping.
+    
+13. Adaptation across extreme variations using unlabeled bridges: introducing unlabeled bridging domains that connect the source and target domains. Can we automatically obtain the bridging domains by spliting the target domain as done in 12.
+
+14. Confidence Regularized Self-Training (CRST)   
+    A predominant stream of adversarial learning based UDA methods were proposed to reudce the discrepancy between source and target domain features. 1) self-training without confidence regularization: retrains with hard pseudo-labels (output is sharp which is unexpected in some case refineryNet); 2) Label regularized self-training introduces soft pseudo-labels (output is smooth which attenuates the misleading effect); 3) Model regualarized self-training: retrain with hard pseudo-labels, but incorporates a regularizer to directly promote output smoothness.    
+    At high-level, the major goal of CRST is still aligned with entropy minimization, the confidence regularization serves as a safety measure to prevent infinite entropy minimization and degraded performance.    
+    The pseudo-label are treated as discrete learnable latent variables being either one-hot or all-zero (not selected one). For each class k, lambda_k is determinied by the confidence value selecting the most confident p protion of class k predictions in the entire target set.   
+    The label regularizer is related to model and pseudo labels
    
 
 
