@@ -16,3 +16,5 @@
 2. NVIDIA ModelZOO Segmentation [zoo](https://modelzoo.co/model/nvidiasemantic-segmentation)
 
 3. PyTorchSeg [github](https://github.com/meetshah1995/pytorch-semseg)
+
+4. ReLER lab -- good at (video) segmentation [website](http://reler.net/)
