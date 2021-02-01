@@ -72,9 +72,18 @@
 
 8. Catastrophic Forgetting Meets Negative Transfer: Batch Spectral Shrinkage. Minimizing the spectral norm of transferable features
 
-9. Learning multiple visual domains with residual adapters: __Multiple domains VGG group__, sharing the same backbone but adding some specific residual connections for the different domains. This is some related with lifelong learning without forgetting, and it can deal with very differnt tasks. Check domain-guided dropout.
 
-10. Efficient parametrization of multi-domain deep neural networks: it shows that it is necessary to adapt both shallow and deep layers of a deep network, but required changes are very small. We also show that these universal parametrization are very effective for transfer learning.
+# Multi-tasks or Multi-domains or Lifelong-learning
+1. Learning multiple visual domains with residual adapters: __Multiple domains VGG group__, sharing the same backbone but adding some specific residual connections for the different domains. This is some related with lifelong learning without forgetting, and it can deal with very differnt tasks. Check domain-guided dropout.
+
+2. Efficient parametrization of multi-domain deep neural networks: it shows that it is necessary to adapt both shallow and deep layers of a deep network, but required changes are very small. We also show that these universal parametrization are very effective for transfer learning.  
+
+3. Lifelong learning with dynamically EXPANDABLE networks：DEN that can dynamically decide its network capacity as it trains on a sequence of tasks.   
+   1). Retraining the entire network while regularizing it to prevent large deviation from the original model.
+   2). Non-retraining models expand the entire network for the new task.
+   3). Partial retraining selectively retrains the old network, expanding its capacity when necessary.
+   
+   Preventing catastrophic forgetting: 1) regularization the model parameters, e.g., L2, Elastic Weight Consolidation via fisher information matrix, also consider the entire learning trajectory rather than the final parameter value. 2) completely block any modifications.
 
 
 # Style Transfer
@@ -137,13 +146,19 @@
     
 16. An Adversarial Perturbation Oriented Domain Adaptation Approach for Semantic Segmentation   
     Aligning the distribution across two domains globally fails in adapting the representations of the tail classes or small objects since the alignment is dominated by head categories or large objects.   
-    We propose to perturb the intermediate feature maps with several attack objectives on each individual position for both domains, the classifier is trained to be invariant to the perturbations. Perform perturbation on feature space. To avoid forgetting knowledge from past environments, we introduce a memory that stores feature statistics from previously seen domains. These statistics can be used to replay images in any of the previously domains, thus preventing catastrophic forgetting.
+    We propose to perturb the intermediate feature maps with several attack objectives on each individual position for both domains, the classifier is trained to be invariant to the perturbations. Perform perturbation on feature space. 
     
 17. Adapting to Changing Environments for Semantic Segmentation (ACE): dynamically adapts to changing environments over time. By aligning the distribution of labeled training data from the original domain with the distribution of incoming data in the target domain. (This is lift-long learning)   
     'lifelong learning' is non-trivial for DNN as 1) new data domains come in at real time without labels; and 2) deep networks suffer from catastrophic forgetting. We consider adapting the pre-trained model to dynamically changing environments whose distributions reflect disparate lighting and weather conditions. We consider the difficulties posed by learning over time, in which target environments appear sequentially.   
-    Instead of using GAN, ACE saves a memory bank (feature statistics) which can transfer the contents of image from source task but in the style of a target task. Style transfer is achieved by renormalizing feature maps of source images so they have first- and second-order feature statistics. The light-weight memory statistics can be saved without the burden of storing a library of historical images.   
+    Instead of using GAN, ACE saves a memory bank (feature statistics) which can transfer the contents of image from source task but in the style of a target task. Style transfer is achieved by renormalizing feature maps of source images so they have first- and second-order feature statistics. The light-weight memory statistics can be saved without the burden of storing a library of historical images. To avoid forgetting knowledge from past environments, we introduce a memory that stores feature statistics from previously seen domains. These statistics can be used to replay images in any of the previously domains, thus preventing catastrophic forgetting.   
     Encoder is vgg19 (fixed), decoder acts as an inverse for the encoder. Encoder should map the decoded image onto the features that produced it.
 
+18. Self-Correction for Human Parsing: to progressively promote the reliability of the supervised labels as well as the learned models. (Extend this writing style for improved SUIT: first improve the generation, second improve with the self-training)    
+    Starting from a model trained with inaccurate annotations as initialization, then iteratively aggregating the current learned model with the former one in an online manner; the corresponding corrected labels can in turn to further boost the performance.   
+    Reference: CE2P is a well-performing framework for the human parsing task that joinly trains the parsing and edge detection. For parsing: cross-entropy + lovasz-softmax; For edge detection: balanced cross-entropy; With additional consistency loss: parsing results matches the predicted edge.    
+    Online model aggregation: aggregate the model during each training cycle (learning rate cyclical period), e.g., Stochastic weight average   
+    Online label refinement: update the ground truth of training labels (Temporal ensemble for the label prediction)
+ 
     
 17. Domain Randomization and Pyramid Consistency - Generalization without Accessing Target Domain Data.
 
