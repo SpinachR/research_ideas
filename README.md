@@ -160,6 +160,10 @@
     Online label refinement: update the ground truth of training labels (Temporal ensemble for the label prediction)
  
 19. Adversarial Style Mining for One-Shot Unsupervised Domain Adaptation: using Random AdaIN to generate more and more aggressive samples
+
+20. Constructing Self-motivated Pyramid Curriculums for Cross-Domain Semantic Segmentation: A Non-Adversarial Approach
+    
+
 17. Domain Randomization and Pyramid Consistency - Generalization without Accessing Target Domain Data.
 
 
