@@ -159,7 +159,7 @@
     Online model aggregation: aggregate the model during each training cycle (learning rate cyclical period), e.g., Stochastic weight average   
     Online label refinement: update the ground truth of training labels (Temporal ensemble for the label prediction)
  
-    
+19. Adversarial Style Mining for One-Shot Unsupervised Domain Adaptation: using Random AdaIN to generate more and more aggressive samples
 17. Domain Randomization and Pyramid Consistency - Generalization without Accessing Target Domain Data.
 
 
@@ -175,6 +175,7 @@
 # Training or Architecture Improvement
 1. Fixing the train-test resolution discrepancy  
 2. Making Convolutional Networks Shift-Invariant Again
+3. Gated Channel Transformation for Visual Recognition 
 
 # Fine-grainded recognition
 1. Local Temporal Bilinear Pooling for Fine-Grained Action Parsing. https://medium.com/syncedreview/local-temporal-bilinear-pooling-for-fine-grained-action-parsing-24a9bdcc1355
