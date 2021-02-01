@@ -1,6 +1,6 @@
 1. DA with multiple sources.
 
-2. DA with scarce data or imbalanced data. Consider generative transfer learning. Adaptation on C and G.
+2. DA with scarce data or imbalanced data. Consider generative transfer learning. Adaptation on C and G. Adversarial Style Mining for One-Shot Unsupervised Domain Adaptation
 
 3. DA Federate learning. Not transmit data, but transmit the generative model trained on the local machine.  
 
@@ -21,3 +21,5 @@
 12. Data augmentation tricks: *Cutout*, *CutMix*, *Hide-and-Seek*, *GridMask Data Augmentation*, style-ImageNet. [link](https://www.cnblogs.com/super-zheng/p/13268074.html) [more augmentation tricks in YOLO4](https://towardsdatascience.com/data-augmentation-in-yolov4-c16bd22b2617)
 
 13. Long-Tailed Classification [link](https://zhuanlan.zhihu.com/p/158638078)
+
+14. D2Net, SuperPoint, Semantic Correspondence as an Optimal Transport Problem
