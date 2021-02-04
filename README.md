@@ -18,6 +18,7 @@
    Need (x, I, F(I)) as input for the Generator: x is label, F(I) is the label of examplar I. However, in most case, F(.) is missing.    
 7. Example-guided Image Synthesis across Arbitrary Scenes using Masked Spatial-Channel Attention and Self-Supervision   
    Also need (x, I, F(I))
+8. Semantic Bottleneck Scene Generation: two steps, z->semantic layout, semantic layout->image
    
 # GAN inversion
 1. In-Domain GAN Inversion for Real Image Editing  
