@@ -19,6 +19,11 @@
 7. Example-guided Image Synthesis across Arbitrary Scenes using Masked Spatial-Channel Attention and Self-Supervision   
    Also need (x, I, F(I))
    
+# GAN inversion
+1. In-Domain GAN Inversion for Real Image Editing  
+   Existing iversion methods typically focus on reconstructing the target image by pixel values yet fail to land the inverted code in the semantic domain of the original latent space. One is learning-based (train an encoder), the other is optimization-based (deal with a single instance at one time, optimize the latent code z). Some work combines these two ideas by using the encoder to generate an initialization z for optimization.    
+   Expoliting deep generative prior: optimize the z and G together. Our work jointly train the encoder and the discriminator, the G is fixed. The second step is similar to 'deep generative prior', but not optimize G and use encoder to constrain instead.
+   
 
 8. Semantic image synthesis with spatially-adaptive normalization (**SPADE**)    
    Semantic layout as input is suboptimal as the normalization layers tend to 'wash away' semantic information. Therefore, we propose to use the layout for modulating the activations in normalization layers through a spatially-adaptive learned transformation.    
