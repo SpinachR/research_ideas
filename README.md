@@ -53,6 +53,21 @@
 3. ATTENTION-AWARE AGE-AGNOSTIC VISUAL PLACE RECOGNITION
 4. Deep Attentional Structured Representation Learning for Visual Recognition (Some regions provide more discriminative information)
 
+# 3D reconstruction
+1. Neural Cages for Detail-Preserving 3D Deformations (3d-to-3d based on 3d)  
+2. Unsupervised Learning of Probably Symmetric Deformable 3D Objects from Images in the Wild (2d-to-3d directly, with 2d as supervision)
+3. C-Flow: Conditional Generative Flow Models for Images and 3D Point Clouds (2d-to-3d, 3d-to-2d)
+4. Learning Free-Form Deformations for 3D object Reconstruction (2d+3d to 3d)
+5. Learning to Generate and Reconstruct 3D Meshes with only 2d Supervison (2d-to-3d)
+6. Learning to Infer Semantic Parameters for 3D Shape Editing
+7. DiscoNet Shapes Learning on Disconnected Manifolds for 3D Editing
+8. Few-shot Generalization for Single-Image 3D Reconstruction via Priors
+9. Image2Mesh: do not rely on landmarks, using model deformation
+10. DeformSyncNet
+11. 3D-CODED: 3D Correspondences by Deep Deformation
+12. 3DN: 3D Deformation Network
+14. Im2Struct: Reconvering 3D Shape Structure from a Single RGB Image
+
 
 # Domain adaptation
 1. GradMix: Multi-source Transfer across Domains and Tasks   
@@ -78,6 +93,9 @@
 
 8. Catastrophic Forgetting Meets Negative Transfer: Batch Spectral Shrinkage. Minimizing the spectral norm of transferable features
 
+# Domain Adaptation Applications
+1. Domain Adaptation for Image Dehazing
+
 
 # Multi-tasks or Multi-domains or Lifelong-learning
 1. Learning multiple visual domains with residual adapters: __Multiple domains VGG group__, sharing the same backbone but adding some specific residual connections for the different domains. This is some related with lifelong learning without forgetting, and it can deal with very differnt tasks. Check domain-guided dropout.
@@ -102,6 +120,7 @@
 
 # Object detection
 1. Gradient Harmonized Single-stage Detector: deal with imbalanced samples based on gradient.
+2. DUNIT: Detection-based Unsupervised Image-to-Image Translation, style transfer, but with encoding the detected object.
 
 
 
