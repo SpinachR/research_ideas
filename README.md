@@ -66,7 +66,7 @@
 10. DeformSyncNet
 11. 3D-CODED: 3D Correspondences by Deep Deformation
 12. 3DN: 3D Deformation Network
-14. Im2Struct: Reconvering 3D Shape Structure from a Single RGB Image
+13. Im2Struct: Reconvering 3D Shape Structure from a Single RGB Image
 
 
 # Domain adaptation
@@ -92,6 +92,10 @@
 7. Deep Co-Training with Task Decomposition for *Semi-Supervised Domain Adaptation*: two tasks (semi-supervised learning + unsupervised domain adaptation)
 
 8. Catastrophic Forgetting Meets Negative Transfer: Batch Spectral Shrinkage. Minimizing the spectral norm of transferable features
+
+9. Light-weight calibration a separable component for unsupervised domain adaptation   
+   Instead of modifing the model, this work modifies the inputs to achieve domain adaptation, which is flexible to adapt to arbitrary new domains after being deployed and compressed. Data calibrator is responsible for achieving domain adaptation via unsupervised training.   
+   Instead of directly generating source-like data, it generates source-like perturbation
 
 # Domain Adaptation Applications
 1. Domain Adaptation for Image Dehazing
