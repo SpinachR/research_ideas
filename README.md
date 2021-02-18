@@ -9,7 +9,10 @@
 3. On stabilizing Generative Adversarial Training with Noise  
 4. Spectral Regularization for Combating Mode Collapse in GANs  
 5. COCO-FUNIT (few-shot, example-guided episodic training): Few shot Unsupervised I2I generalize the model to an unseen domain by legeraing examples at inference time.    
-   Few-shot I2I models find it difficult to preserve the **structure of the input image** while emulating the appearance of unseen domain (the content loss)    
+   Few-shot I2I models find it difficult to preserve the **structure of the input image** while emulating the appearance of unseen domain (the content loss)   
+   Content conditioned style encoder
+   
+   
 6. Example-guided Style-Consistent Image Synthesis from Semantic Labeling   
    a. style consistency discriminator to determine whether a pair of images are consistent in style    
    b. adaptive semantic consistency loss     
@@ -18,14 +21,7 @@
    Need (x, I, F(I)) as input for the Generator: x is label, F(I) is the label of examplar I. However, in most case, F(.) is missing.    
 7. Example-guided Image Synthesis across Arbitrary Scenes using Masked Spatial-Channel Attention and Self-Supervision   
    Also need (x, I, F(I))
-8. Semantic Bottleneck Scene Generation: two steps, z->semantic layout, semantic layout->image
    
-# GAN inversion
-1. In-Domain GAN Inversion for Real Image Editing  
-   Existing iversion methods typically focus on reconstructing the target image by pixel values yet fail to land the inverted code in the semantic domain of the original latent space. One is learning-based (train an encoder), the other is optimization-based (deal with a single instance at one time, optimize the latent code z). Some work combines these two ideas by using the encoder to generate an initialization z for optimization.    
-   Expoliting deep generative prior: optimize the z and G together. Our work jointly train the encoder and the discriminator, the G is fixed. The second step is similar to 'deep generative prior', but not optimize G and use encoder to constrain instead.
-   
-
 8. Semantic image synthesis with spatially-adaptive normalization (**SPADE**)    
    Semantic layout as input is suboptimal as the normalization layers tend to 'wash away' semantic information. Therefore, we propose to use the layout for modulating the activations in normalization layers through a spatially-adaptive learned transformation.    
    The semantic is controlled via a label map, the style is controlled via the reference style image. Spatially-adaptive normalization is a conditional normalization layer that modulates the activations using input semantic layouts through a spatially-adaptive transformation.   
@@ -41,7 +37,19 @@
     The spatially varying normalization parameters are dependent on the segmentation mask as well as the style input images.  
     Style can be encoded in three places: 1) statistics of image features; 2) neural network weights; 3) parameters of a network normalization layers.
     Need input both segmentation maps and style images. They won't be paired.
+    
+    
+12. Semantic Bottleneck Scene Generation: two steps, z->semantic layout, semantic layout->image
+
+13. You Only Need Adversarial Supervision for Semantic Image Synthesis
    
+
+# GAN inversion
+1. In-Domain GAN Inversion for Real Image Editing  
+   Existing iversion methods typically focus on reconstructing the target image by pixel values yet fail to land the inverted code in the semantic domain of the original latent space. One is learning-based (train an encoder), the other is optimization-based (deal with a single instance at one time, optimize the latent code z). Some work combines these two ideas by using the encoder to generate an initialization z for optimization.    
+   Expoliting deep generative prior: optimize the z and G together. Our work jointly train the encoder and the discriminator, the G is fixed. The second step is similar to 'deep generative prior', but not optimize G and use encoder to constrain instead.
+
+
 
 # Multi-label classification
 1. Learning a Deep ConvNet for Multi-label Classification with Partial Labels  
@@ -144,7 +152,11 @@
    - Noted label statistics from source domain should be considered.
    - It is also useful for object detection with single-shot multibox detector. **GOOD WORK**
    
-10. DADA - Depth-Aware Domain Adaptation in Semantic Segmentation. 
+10. DADA - Depth-Aware Domain Adaptation in Semantic Segmentation.   
+    Introducing additional depth-specific adaptation brings complementary effects to further bridge the performance between source and target at test time. Depth is an additional source domain supervision during training.   
+    Therefore, we introduce a new depth-aware adversarial training protocol based on fusion of the network outputs, different depth levels should be treated differently. Using depth information to fuse the entropy of the pixel-wise predictions to help ADVENT.
+    
+
 11. Self-Ensembling with GAN-based Data Augmentation: heavily-tuned manual data augmentation used in self-ensembling is not useful to reduce the large domain gap in the semantic segmentation. GAN augmentation + self-ensembling.    
     Cycle-consistency has two limitations: needs redundant modules; too strong when target data are scarce.   
     Cycle-free data augmentation: Xg = G(Xs, Xt)  Xt provide style information based on Adaptive Instance Normalization with semantic constraint.   
