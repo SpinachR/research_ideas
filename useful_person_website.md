@@ -9,6 +9,8 @@
 
 5. Bin Dong (Peking university) -- [websites](http://bicmr.pku.edu.cn/~dongbin/Publications.html)
 
+6. Jonathan Hui (medium) -- [websites](https://jonathan-hui.medium.com/)
+
 
 # Websites
 1. NVIDIA Research Projects [github](https://github.com/NVlabs)
