@@ -11,6 +11,7 @@
 
 6. Jonathan Hui (medium) -- [websites](https://jonathan-hui.medium.com/)
 
+7. Xiaolong Wang (UC San Diego) -- [google scholar](https://scholar.google.com/citations?hl=zh-CN&user=Y8O9N_0AAAAJ&view_op=list_works&sortby=pubdate) Correspondence control, self-supervised, contrastive learning
 
 # Websites
 1. NVIDIA Research Projects [github](https://github.com/NVlabs)
