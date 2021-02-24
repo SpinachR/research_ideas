@@ -13,6 +13,8 @@
 
 7. Xiaolong Wang (UC San Diego) -- [google scholar](https://scholar.google.com/citations?hl=zh-CN&user=Y8O9N_0AAAAJ&view_op=list_works&sortby=pubdate) Correspondence control, self-supervised, contrastive learning
 
+8. Luc Van Gool (ETH Zurich) -- [google scholar](https://scholar.google.ch/citations?hl=en&user=TwMib_QAAAAJ&view_op=list_works&sortby=pubdate) something we can follow
+
 # Websites
 1. NVIDIA Research Projects [github](https://github.com/NVlabs)
 
