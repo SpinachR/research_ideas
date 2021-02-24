@@ -23,3 +23,9 @@
 13. Long-Tailed Classification [link](https://zhuanlan.zhihu.com/p/158638078)
 
 14. D2Net, SuperPoint, Semantic Correspondence as an Optimal Transport Problem
+
+15. Using style transfer or GAN for depth estimation
+
+16. Multi-tasks for semantic segmentation and depth estimation (using asymmetric annotations), DF-Net: joint learning of Depth and Flow using cross-task consistency (https://zhuanlan.zhihu.com/p/111759578)
+
+17. depth estimation (https://zhuanlan.zhihu.com/p/111759578)
