@@ -28,4 +28,4 @@
 
 16. Multi-tasks for semantic segmentation and depth estimation (using asymmetric annotations), DF-Net: joint learning of Depth and Flow using cross-task consistency (https://zhuanlan.zhihu.com/p/111759578)
 
-17. depth estimation (https://zhuanlan.zhihu.com/p/111759578)
+17. depth estimation (https://zhuanlan.zhihu.com/p/111759578) (https://heartbeat.fritz.ai/research-guide-for-depth-estimation-with-deep-learning-1a02a439b834)
