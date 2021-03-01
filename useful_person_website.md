@@ -27,3 +27,7 @@
 3. PyTorchSeg [github](https://github.com/meetshah1995/pytorch-semseg)
 
 4. ReLER lab -- good at (video) segmentation [website](http://reler.net/)
+
+5. 3D reconstruction -- [a pdf](https://www.cs.utah.edu/~srikumar/cv_spring2017_files/Lecture4.pdf)
+
+6. From 3D reconstruction to recognition -- [standford course](https://web.stanford.edu/class/cs231a/syllabus.html)
