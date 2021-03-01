@@ -30,4 +30,4 @@
 
 5. 3D reconstruction -- [a pdf](https://www.cs.utah.edu/~srikumar/cv_spring2017_files/Lecture4.pdf)
 
-6. From 3D reconstruction to recognition -- [standford course](https://web.stanford.edu/class/cs231a/syllabus.html)
+6. From 3D reconstruction to recognition -- [stanford course](https://web.stanford.edu/class/cs231a/syllabus.html)
