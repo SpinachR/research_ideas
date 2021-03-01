@@ -15,6 +15,10 @@
 
 8. Luc Van Gool (ETH Zurich) -- [google scholar](https://scholar.google.ch/citations?hl=en&user=TwMib_QAAAAJ&view_op=list_works&sortby=pubdate) something we can follow
 
+9. Vittorio Ferrari (Google) -- [website](https://sites.google.com/view/vittoferrari) Open Images V6 datasets, Towards reusable network components (faster transfer learning), Interactive Object Segmentation, Vid2CAD
+
+10. xxx [Fudan] -- [jianshu](https://www.jianshu.com/p/6c4bac018f79) video, 3d
+
 # Websites
 1. NVIDIA Research Projects [github](https://github.com/NVlabs)
 
