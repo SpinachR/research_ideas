@@ -19,7 +19,7 @@
 
 10. xxx [Fudan] -- [jianshu](https://www.jianshu.com/p/6c4bac018f79) video, 3d
 
-11. Bartoli -- [shape from template](http://igt.ip.uca.fr/encov/publications/pubfiles/2015_Bartoli_etal_PAMI_sft.pdf) (http://www.lirmm.fr/ModuleImage/2018/Bartoli_Part2.pdf)
+11. Bartoli -- [shape from template](http://igt.ip.uca.fr/encov/publications/pubfiles/2015_Bartoli_etal_PAMI_sft.pdf) (http://www.lirmm.fr/ModuleImage/2018/Bartoli_Part2.pdf) Local Deformable 3D Reconstruction with Cartan's Connections (https://pubmed.ncbi.nlm.nih.gov/31180886/)
 
 # Websites
 1. NVIDIA Research Projects [github](https://github.com/NVlabs)
