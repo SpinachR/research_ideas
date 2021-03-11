@@ -362,6 +362,7 @@
 
 30. Label-Noise Robust Generative Adversarial Networks. Noisy learning in the generative model.   
 31. Robustness of Conditional GANs to Noisy Labels    
+32. Self-Adaptive Training Bridging the Supervised and Self-Supervised learning (EMA for both the target prediction and the network parameters)
 
 
     
