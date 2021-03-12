@@ -33,3 +33,5 @@
 5. 3D reconstruction -- [a pdf](https://www.cs.utah.edu/~srikumar/cv_spring2017_files/Lecture4.pdf)
 
 6. From 3D reconstruction to recognition -- [stanford course](https://web.stanford.edu/class/cs231a/syllabus.html)
+
+7. Image Matting -- [code](http://blog.leanote.com/post/610167078@qq.com/Image-Matting)
