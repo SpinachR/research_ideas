@@ -29,3 +29,5 @@
 16. Multi-tasks for semantic segmentation and depth estimation (using asymmetric annotations), DF-Net: joint learning of Depth and Flow using cross-task consistency (https://zhuanlan.zhihu.com/p/111759578)
 
 17. depth estimation (https://zhuanlan.zhihu.com/p/111759578) (https://heartbeat.fritz.ai/research-guide-for-depth-estimation-with-deep-learning-1a02a439b834)
+
+18. Blind Video Temporal Consistency | Learning Blind Video Temporal Consistency | Blind Video Temporal Consistency via Deep Video Prior: there are also many image processing tasks, how to ensure the video temporal consistency for each frame processed by image processing function. 
