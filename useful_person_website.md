@@ -35,3 +35,5 @@
 6. From 3D reconstruction to recognition -- [stanford course](https://web.stanford.edu/class/cs231a/syllabus.html)
 
 7. Image Matting -- [code](http://blog.leanote.com/post/610167078@qq.com/Image-Matting)
+
+8. pytorch stable version --[website](https://download.pytorch.org/whl/cu90/torch_stable.html)
