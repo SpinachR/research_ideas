@@ -39,3 +39,5 @@
 7. Image Matting -- [code](http://blog.leanote.com/post/610167078@qq.com/Image-Matting)
 
 8. pytorch stable version --[website](https://download.pytorch.org/whl/cu90/torch_stable.html) pip install torch==1.4.0+cu92 torchvision==0.5.0+cu92 -f https://download.pytorch.org/whl/torch_stable.html
+
+9. Computer Graphic Course -- [website](http://graphics.stanford.edu/courses/)
