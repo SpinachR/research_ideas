@@ -45,3 +45,5 @@
 10. PDE -- [youtube](https://www.youtube.com/user/commutant/videos)  for image registration (https://zhuanlan.zhihu.com/Image-Registration?page=3)
 
 11. deformation introduction (Thin-plate|Free-Form|cage-based deformation) -- [lecture](https://www.cse.wustl.edu/~taoju/cse554/lectures/lect07_Deformation2.pdf)
+
+12. CVFX Lecture -- [Rich Radke](https://www.youtube.com/watch?v=2pbH6A6d_Ow)
