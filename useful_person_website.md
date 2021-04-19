@@ -43,3 +43,5 @@
 9. Computer Graphic Course -- [website](http://graphics.stanford.edu/courses/)
 
 10. PDE -- [youtube](https://www.youtube.com/user/commutant/videos)  for image registration (https://zhuanlan.zhihu.com/Image-Registration?page=3)
+
+11. deformation introduction (Thin-plate|Free-Form|cage-based deformation) -- [lecture](https://www.cse.wustl.edu/~taoju/cse554/lectures/lect07_Deformation2.pdf)
