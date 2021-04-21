@@ -36,4 +36,4 @@
 
 20. Progressive sprinkles (88.6), cutmix (86.6), mixup (86.4) XResNet50, True Wd, Relu activation, bs=50, size = 128 (https://www.kaggle.com/saife245/cutmix-vs-mixup-vs-gridmask-vs-cutout)
 
-21. Train prediction models and [GAN models, conditions (tell which domain belongs to), features distributions] on different sites (domain distributions are different), then distillation for multiple times.
+21. Train prediction models and [GAN models, conditions (tell which domain belongs to), features distributions] on different sites (domain distributions are different), then distillation for multiple times. (multiple models distillation (fusion): give a lambda weight for the model_1, (1-lambda) weight for model_2, change lambda from 0-1 to distill multiple times. Each time, there will be a new model_1 and model_2, replace the older version) This operation aims for very different data distributions during model fusion.
