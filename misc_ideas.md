@@ -35,3 +35,5 @@
 19. Cross-Supervised Object Detection: generalize to the novel categories by using image-level labels as weakly-supervision.
 
 20. Progressive sprinkles (88.6), cutmix (86.6), mixup (86.4) XResNet50, True Wd, Relu activation, bs=50, size = 128 (https://www.kaggle.com/saife245/cutmix-vs-mixup-vs-gridmask-vs-cutout)
+
+21. Train prediction models and [GAN models, conditions (tell which domain belongs to), features distributions] on different sites (domain distributions are different), then distillation for multiple times.
