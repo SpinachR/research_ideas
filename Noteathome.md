@@ -27,4 +27,4 @@ https://link.springer.com/content/pdf/10.1007/s11263-006-0017-9.pdf
 
 http://igt.ip.uca.fr/encov/publications/pubfiles/2012_Pizarro_etal_IJCV_selfocclusion.pdf
 
-https://www.cv-foundation.org/openaccess/content_iccv_2015/papers/Ngo_Dense_Image_Registration_ICCV_2015_paper.pdf
+https://www.cv-foundation.org/openaccess/content_iccv_2015/papers/Ngo_Dense_Image_Registration_ICCV_2015_paper.pdf (https://www.epfl.ch/labs/cvlab/software/surface/dense-image-reconstruction/)
