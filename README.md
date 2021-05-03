@@ -208,6 +208,13 @@
 17. Domain Randomization and Pyramid Consistency - Generalization without Accessing Target Domain Data.
 
 
+# Semantic Part Segmentation
+segment parts within an object as opposed to objects within a scene as in semantic segmentation. This is more challenging because two parts sometimes do not have a visible boundary between them. Segment the same object, which has the same multiple parts, e.g., car object (with many components) or face object (with many components)
+
+1. Repurposing GANs for One-shot Semantic Part Segmentation   
+2. Scops: Self-supervised co-part segmentation   
+
+
 # Distillation or self-training
 1. Data Distillation: Towards Omni-Supervised Learning. 
 2. Lessons from building acoustic models with a million hours of speech  
