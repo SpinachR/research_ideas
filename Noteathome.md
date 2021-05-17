@@ -58,3 +58,9 @@ Deformable Surface Tracking by Graph Matching
 Template-based Monocular 3D Recovery of Elastic Shapes using Lagrangian Multipliers
 
 Deformable Surface 3D Reconstruction from a Single Image by Linear Programming
+
+# shape from motion
+
+http://vision.ia.ac.cn/Faculty/shshen/3D_Reconstruction_CCCV2017_Tutorial.pdf
+
+https://zhuanlan.zhihu.com/p/30033898
