@@ -49,3 +49,5 @@
 12. CVFX Lecture -- [Rich Radke](https://www.youtube.com/watch?v=2pbH6A6d_Ow)
 
 13. Robert T. Collins -- [Computer Vision Course]http://www.cse.psu.edu/~rtc12/teaching.html
+
+14. https://www.cs.princeton.edu/courses/archive/fall17/cos429/outline.html
