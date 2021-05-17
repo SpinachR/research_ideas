@@ -47,3 +47,5 @@
 11. deformation introduction (Thin-plate|Free-Form|cage-based deformation) -- [lecture](https://www.cse.wustl.edu/~taoju/cse554/lectures/lect07_Deformation2.pdf)
 
 12. CVFX Lecture -- [Rich Radke](https://www.youtube.com/watch?v=2pbH6A6d_Ow)
+
+13. Robert T. Collins -- [Computer Vision Course]http://www.cse.psu.edu/~rtc12/teaching.html
