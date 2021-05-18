@@ -23,6 +23,8 @@
 
 12. zhang bo -- [image translation](https://bo-zhang.me/)
 
+13. huang gao -- [Tsinghua](http://www.gaohuang.net/)
+
 # Websites
 1. NVIDIA Research Projects [github](https://github.com/NVlabs)
 
