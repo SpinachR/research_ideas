@@ -264,6 +264,8 @@ segment parts within an object as opposed to objects within a scene as in semant
 1. Self-supervised Representation Learning using 360° Data
 2. Prototypical Contrastive Learning of Unsupervised Representations
 3. Unsupervised Learning of View-invariant Action Representations
+4. Un-Mix: Rethinking Image Mixtures for Unsupervised Visual Representation Learning
+5. MEAL V2: Boosting Vanilla ResNet-50 to 80%+ Top-1 Accuracy on ImageNet without Tricks
    
 # Noise label learning
 1. A Simple yet Effective Baseline for Robust Deep Learning with Noisy Labels 
