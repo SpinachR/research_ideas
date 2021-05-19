@@ -55,3 +55,5 @@
 14. https://www.cs.princeton.edu/courses/archive/fall17/cos429/outline.html
 
 15. 3d compuater vision -- [NUS Gim Hee Lee](https://www.youtube.com/watch?v=m7sChPmkFjE)
+
+16. cvpr2017 tutorial -- [sfm and mvs](https://demuc.de/tutorials/cvpr2017/)
