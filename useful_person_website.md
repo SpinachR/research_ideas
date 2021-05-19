@@ -53,3 +53,5 @@
 13. Robert T. Collins -- [Computer Vision Course]http://www.cse.psu.edu/~rtc12/teaching.html
 
 14. https://www.cs.princeton.edu/courses/archive/fall17/cos429/outline.html
+
+15. 3d compuater vision -- [NUS Gim Hee Lee](https://www.youtube.com/watch?v=m7sChPmkFjE)
