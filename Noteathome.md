@@ -61,6 +61,14 @@ Local Deformable 3D Reconstruction with Cartan’s Connections
 
 Using Shading and a 3D Template to Reconstruct Complex Surface Deformations
 
+The Isowarp: The Template-Based Visual Geometry of Isometric Surfaces
+
+Model-Based Real-Time Non-Rigid Tracking
+
+Deep Shape-from-Template
+
+http://igt.ip.uca.fr/encov/publications/pubfiles/2016_Collins_etal_MICCAI_tracking.pdf
+
 # shape from motion
 
 http://vision.ia.ac.cn/Faculty/shshen/3D_Reconstruction_CCCV2017_Tutorial.pdf
