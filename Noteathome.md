@@ -49,8 +49,6 @@ On Template-Based Reconstruction from a Single View: Analytical Solutions and Pr
 
 Can we Jointly Register and Reconstruct Creased Surfaces by Shape-from-Template Accurately?
 
-Using Shading and a 3D Template to Reconstruct Complex Surface Deformations
-
 Fast shape-from-template using local features
 
 Deformable Surface Tracking by Graph Matching
@@ -58,6 +56,10 @@ Deformable Surface Tracking by Graph Matching
 Template-based Monocular 3D Recovery of Elastic Shapes using Lagrangian Multipliers
 
 Deformable Surface 3D Reconstruction from a Single Image by Linear Programming
+
+Local Deformable 3D Reconstruction with Cartan’s Connections
+
+Using Shading and a 3D Template to Reconstruct Complex Surface Deformations
 
 # shape from motion
 
