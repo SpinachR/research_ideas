@@ -27,17 +27,13 @@ https://link.springer.com/content/pdf/10.1007/s11263-006-0017-9.pdf
 
 http://igt.ip.uca.fr/encov/publications/pubfiles/2012_Pizarro_etal_IJCV_selfocclusion.pdf
 
-https://www.cv-foundation.org/openaccess/content_iccv_2015/papers/Ngo_Dense_Image_Registration_ICCV_2015_paper.pdf (https://www.epfl.ch/labs/cvlab/software/surface/dense-image-reconstruction/)
+https://www.cv-foundation.org/openaccess/content_iccv_2015/papers/Ngo_Dense_Image_Registration_ICCV_2015_paper.pdf (https://www.epfl.ch/labs/cvlab/software/surface/dense-image-reconstruction/) (https://www.epfl.ch/labs/cvlab/software/surface/)
 
 Linear Local Models for Monocular Reconstruction of Deformable Surfaces
 
 Monocular Template-based Reconstruction of Inextensible Surfaces
 
 Maximizing the Predictivity of Smooth Deformable Image Warps through Cross-Validation
-
-Simultaneous Point Matching and 3D Deformable Surface Reconstruction
-
-NRST: non-rigid surface tracking from monocular video
 
 Deformable Surface 3D Reconstruction from Monocular Images
 
@@ -52,6 +48,12 @@ Can we Jointly Register and Reconstruct Creased Surfaces by Shape-from-Template 
 Fast shape-from-template using local features
 
 Deformable Surface Tracking by Graph Matching
+
+Direct, Dense, and Deformable: Template-Based Non-Rigid 3D Reconstruction from RGB Video
+
+NRST: non-rigid surface tracking from monocular video
+
+Simultaneous Point Matching and 3D Deformable Surface Reconstruction
 
 Template-based Monocular 3D Recovery of Elastic Shapes using Lagrangian Multipliers
 
