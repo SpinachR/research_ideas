@@ -57,3 +57,5 @@
 15. 3d compuater vision -- [NUS Gim Hee Lee](https://www.youtube.com/watch?v=m7sChPmkFjE)
 
 16. CVPR2017/CCCV2016 tutorial -- [sfm and mvs](https://demuc.de/tutorials/cvpr2017/)  / [3d reconstruction](http://tianweishen.com/sub/ACCV2016/ACCV_2016_Tutorial.html)
+
+17. camera matrix explanation -- [display](https://ksimek.github.io/2012/08/22/extrinsic/)
