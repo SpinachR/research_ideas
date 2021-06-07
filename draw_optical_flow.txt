@@ -1,0 +1,458 @@
+import cv2
+import numpy as np
+import flow_vis
+import matplotlib.pyplot as plt
+
+
+def warp_image_python(im, flow):
+    """
+    Use optical flow to warp image to the next
+    :param im: image to warp
+    :param flow: optical flow
+    :return: warped image
+    """
+    from scipy import interpolate
+    image_height = im.shape[0]
+    image_width = im.shape[1]
+    flow_height = flow.shape[0]
+    flow_width = flow.shape[1]
+    n = image_height * image_width
+    (iy, ix) = np.mgrid[0:image_height, 0:image_width]
+    (fy, fx) = np.mgrid[0:flow_height, 0:flow_width]
+    fx = np.add(fx, flow[:,:,0], casting='unsafe')
+    fy = np.add(fy, flow[:,:,1], casting='unsafe')
+    mask = np.logical_or(fx <0 , fx > flow_width)
+    mask = np.logical_or(mask, fy < 0)
+    mask = np.logical_or(mask, fy > flow_height)
+    fx = np.minimum(np.maximum(fx, 0), flow_width)
+    fy = np.minimum(np.maximum(fy, 0), flow_height)
+    points = np.concatenate((ix.reshape(n,1), iy.reshape(n,1)), axis=1)
+    xi = np.concatenate((fx.reshape(n, 1), fy.reshape(n,1)), axis=1)
+    warp = np.zeros((image_height, image_width, im.shape[2]))
+    for i in range(im.shape[2]):
+        channel = im[:, :, i]
+        plt.imshow(channel, cmap='gray')
+        values = channel.reshape(n, 1)
+        new_channel = interpolate.griddata(points, values, xi, method='cubic')
+        new_channel = np.reshape(new_channel, [flow_height, flow_width])
+        new_channel[mask] = 1
+        warp[:, :, i] = new_channel.astype(np.uint8)
+
+    return warp.astype(np.uint8)
+
+
+def put_optical_flow_arrows_on_image(image, optical_flow_image, threshold=2.0, skip_amount=30):
+    # Don't affect original image
+    image = image.copy()
+
+    # Turn grayscale to rgb if needed
+    if len(image.shape) == 2:
+        image = np.stack((image,) * 3, axis=2)
+
+    # Get start and end coordinates of the optical flow
+    flow_start = np.stack(np.meshgrid(range(optical_flow_image.shape[1]), range(optical_flow_image.shape[0])), 2)
+    flow_end = (optical_flow_image[flow_start[:, :, 1], flow_start[:, :, 0], :1] * 3 + flow_start).astype(np.int32)
+
+    # Threshold values
+    norm = np.linalg.norm(flow_end - flow_start, axis=2)
+    norm[norm < threshold] = 0
+
+    # Draw all the nonzero values
+    nz = np.nonzero(norm)
+    for i in range(0, len(nz[0]), skip_amount):
+        y, x = nz[0][i], nz[1][i]
+        cv2.arrowedLine(image,
+                        pt1=tuple(flow_start[y, x]),
+                        pt2=tuple(flow_end[y, x]),
+                        color=(0, 255, 0),
+                        thickness=1,
+                        tipLength=.2)
+    return image
+
+
+frame1 = cv2.imread('image.png')
+frame2 = cv2.imread('image_warped.png')
+print(frame1.shape)
+print(frame2.shape)
+prvs = cv2.cvtColor(frame1, cv2.COLOR_BGR2GRAY)
+next = cv2.cvtColor(frame2, cv2.COLOR_BGR2GRAY)
+flow = cv2.calcOpticalFlowFarneback(prvs, next, None, 0.5, 3, 15, 3, 5, 1.2, 0)
+
+magnitude, angle = cv2.cartToPolar(flow[..., 0], flow[..., 1])
+mask = np.zeros_like(frame1)
+mask[...,1] = 255
+mask[..., 0] = angle * 180 / np.pi / 2
+mask[..., 2] = cv2.normalize(magnitude, None, 0, 255, cv2.NORM_MINMAX)
+rgb = cv2.cvtColor(mask, cv2.COLOR_HSV2BGR)
+
+
+h, w = flow.shape[:2]
+flow = -flow
+flow[:,:,0] += np.arange(w)
+flow[:,:,1] += np.arange(h)[:,np.newaxis]
+prevImg = cv2.remap(frame1, flow, None, cv2.INTER_LINEAR)
+cv2.imshow('new_frame1', prevImg)
+
+# x = put_optical_flow_arrows_on_image(frame1, flow, threshold=2.0, skip_amount=30)
+#
+# fig, axs = plt.subplots(1, 3, figsize=(12, 6))
+# axs[0].imshow(frame1)
+# axs[1].imshow(frame2)
+# axs[2].imshow(x)
+# plt.show()
+
+
+# new_frame2 = warp_image_python(frame1, flow)
+# cv2.imshow('new_frame2', new_frame2)
+
+
+
+# Change here
+horz = cv2.normalize(flow[...,0], None, 0, 255, cv2.NORM_MINMAX)
+vert = cv2.normalize(flow[...,1], None, 0, 255, cv2.NORM_MINMAX)
+h = flow[...,0]
+print(h.shape)
+print(np.max(h), np.min(h))
+horz = horz.astype('uint8')
+vert = vert.astype('uint8')
+
+# Change here too
+# cv2.imshow('Horizontal Component', horz)
+# cv2.imshow('Vertical Component', vert)
+
+k = cv2.waitKey(0) & 0xff
+if k == ord('s'): # Change here
+    cv2.imwrite('opticalflow_horz.pgm', horz)
+    cv2.imwrite('opticalflow_vert.pgm', vert)
+
+cv2.destroyAllWindows()
+
+
+import numpy as np
+import matplotlib as mpl
+import matplotlib.pyplot as plt
+from PIL import Image
+import thinplate as tps
+import cv2
+import torch
+import torch.optim as optim
+import torch.nn.functional as F
+import torchvision.transforms as transforms
+from torch.autograd import Variable
+import math
+
+def smoothing_loss(y_pred):
+    dy = torch.abs(y_pred[:, 1:, :, :] - y_pred[:, :-1, :, :])
+    dx = torch.abs(y_pred[:, :, 1:, :] - y_pred[:, :, :-1, :])
+    dx = torch.mul(dx, dx)
+    dy = torch.mul(dy, dy)
+    d = torch.mean(dx) + torch.mean(dy)
+    return d/2.
+
+
+
+def ncc_loss(y_true, y_pred):
+    I = y_true
+    J = y_pred
+
+    # assumes I, J are sized [batch_size, *vol_shape, nb_feats]
+    ndims = len(list(I.size())) - 2
+    assert ndims in [1, 2, 3], "volumes should be 1 to 3 dimensions. found: %d" % ndims
+
+    win = [10] * ndims
+    sum_filt = torch.ones([1, 3, *win])
+    pad_no = math.floor(win[0] / 2)
+
+    if ndims == 1:
+        stride = (1)
+        padding = (pad_no)
+    elif ndims == 2:
+        stride = (1, 1)
+        padding = (pad_no, pad_no)
+    else:
+        stride = (1, 1, 1)
+        padding = (pad_no, pad_no, pad_no)
+
+    conv_fn = getattr(F, 'conv%dd' % ndims)
+    I2 = I * I
+    J2 = J * J
+    IJ = I * J
+
+    I_sum = conv_fn(I, sum_filt, stride=stride, padding=padding)
+    J_sum = conv_fn(J, sum_filt, stride=stride, padding=padding)
+    I2_sum = conv_fn(I2, sum_filt, stride=stride, padding=padding)
+    J2_sum = conv_fn(J2, sum_filt, stride=stride, padding=padding)
+    IJ_sum = conv_fn(IJ, sum_filt, stride=stride, padding=padding)
+
+    win_size = np.prod(win) * 3
+    u_I = I_sum / win_size
+    u_J = J_sum / win_size
+
+    cross = IJ_sum - u_J * I_sum - u_I * J_sum + u_I * u_J * win_size
+    I_var = I2_sum - 2 * u_I * I_sum + u_I * u_I * win_size
+    J_var = J2_sum - 2 * u_J * J_sum + u_J * u_J * win_size
+
+    cc = cross * cross / (I_var * J_var + 1e-5)
+
+    return -torch.mean(cc)
+
+
+def grid2contour(grid):
+    '''
+    grid--image_grid used to show deform field
+    type: numpy ndarray, shape： (h, w, 2), value range：(-1, 1)
+    '''
+    assert grid.ndim == 3
+    x = np.arange(-1, 1, 2 / grid.shape[1])
+    y = np.arange(-1, 1, 2 / grid.shape[0])
+    X, Y = np.meshgrid(x, y)
+    Z1 = grid[:, :, 0] + 2  # remove the dashed line
+    Z1 = Z1[::-1]  # vertical flip
+    Z2 = grid[:, :, 1] + 2
+
+    plt.figure()
+    plt.contour(X, Y, Z1, 15, colors='k')
+    plt.contour(X, Y, Z2, 15, colors='k')
+    plt.xticks(()), plt.yticks(())  # remove x, y ticks
+    plt.title('deform field')
+    plt.show()
+
+
+def to_numpy_image(x):
+    return (x.detach().permute(0,2,3,1).numpy()*255).astype(np.uint8)
+
+
+def get_identity_grid(H, W):
+    yy = torch.arange(0, H).view(-1 ,1).repeat(1 ,W)
+    xx = torch.arange(0, W).view(1 ,-1).repeat(H ,1)
+    xx = xx.view(1, 1, H, W)
+    yy = yy.view(1, 1, H, W)
+    grid = torch.cat((xx, yy), 1).float()
+    return Variable(grid, requires_grad = False)
+
+
+def get_identity_grid_1(ow, oh):
+    x = torch.linspace(-1.0, 1.0, ow)
+    y = torch.linspace(-1.0, 1.0, oh)
+    xx, yy = torch.meshgrid([x, y])
+    xx = xx.unsqueeze(dim=0)
+    yy = yy.unsqueeze(dim=0)
+    identity = torch.cat((yy, xx), dim=0).unsqueeze(0)
+    return Variable(identity, requires_grad = False)
+
+def flow_warp(x, flow):
+    assert x.size()[-2:] == flow.size()[-2:]
+    n, _, h, w = x.size()
+    x_ = torch.arange(w).view(1, -1).expand(h, -1)
+    y_ = torch.arange(h).view(-1, 1).expand(-1, w)
+    grid = torch.stack([x_, y_], dim=0).float()
+    grid = grid.unsqueeze(0).expand(n, -1, -1, -1)
+    grid[:, 0, :, :] = 2 * grid[:, 0, :, :] / (w - 1) - 1
+    grid[:, 1, :, :] = 2 * grid[:, 1, :, :] / (h - 1) - 1
+    grid += 2 * flow
+    grid = grid.permute(0, 2, 3, 1)
+    return F.grid_sample(x, grid, padding_mode='zeros'), grid
+
+
+
+
+transform1 = transforms.Compose([
+    transforms.ToTensor(),  # range [0, 255] -> [0.0,1.0] and convert [H,W,C] to [C,H,W]
+])
+
+img = cv2.imread('1_x.jpg')
+src = transform1(img)  # 归一化到 [0.0,1.0],并转成[C,H,W]
+src = src.unsqueeze(0)
+
+img = cv2.imread('2_x.jpg')
+target = transform1(img)
+target = target.unsqueeze(0)
+
+B, C, H, W = src.shape
+
+deformation = torch.zeros(src.shape[0], 2, src.shape[2], src.shape[3], requires_grad=True)
+
+identity_grid = get_identity_grid(src.shape[2], src.shape[3])
+
+
+opt = optim.Adam([deformation], lr=1e-3)
+for i in range(400):
+    opt.zero_grad()
+
+    warped, resampling_grid = flow_warp(src, deformation)
+    loss = F.mse_loss(target, warped) + smoothing_loss(warped)
+    loss.backward()
+    opt.step()
+
+    if i % 100 == 0:
+        print(i, loss.item())
+        grid = resampling_grid.detach().numpy()
+        grid2contour(grid[0])
+
+        src_np = to_numpy_image(src)
+        dst_np = to_numpy_image(target)
+        final_np = to_numpy_image(warped)
+
+        fig, axs = plt.subplots(src.shape[0], 3, figsize=(12, 6))
+
+        for i in range(src.shape[0]):
+
+            axs[0].imshow(src_np[i])
+            axs[1].imshow(dst_np[i])
+            axs[2].imshow(final_np[i])
+            axs[0].set_title('source')
+            axs[1].set_title('target')
+            axs[2].set_title('result')
+
+        plt.show()
+___________________________________________________
+
+
+import numpy as np
+import matplotlib as mpl
+import matplotlib.pyplot as plt
+from PIL import Image
+import thinplate as tps
+import cv2
+import torch
+import torch.optim as optim
+import torch.nn.functional as F
+import torchvision.transforms as transforms
+import math
+
+
+def grad(y_pred, penalty='l1'):
+    dy = torch.abs(y_pred[ :, 1:, :, :] - y_pred[:, :-1, :, :])
+    dx = torch.abs(y_pred[ :, :, 1:, :] - y_pred[ :, :, :-1, :])
+    dz = torch.abs(y_pred[ :, :, :, 1:] - y_pred[ :, :, :, :-1])
+    if penalty == 'l2':
+        dy = dy * dy
+        dx = dx * dx
+        dz = dz * dz
+    d = torch.mean(dx) + torch.mean(dy) + torch.mean(dz)
+    grad = d / 3.
+    return 0.1* grad
+
+
+
+def ncc_loss(y_true, y_pred):
+    I = y_true
+    J = y_pred
+
+    # assumes I, J are sized [batch_size, *vol_shape, nb_feats]
+    ndims = len(list(I.size())) - 2
+    assert ndims in [1, 2, 3], "volumes should be 1 to 3 dimensions. found: %d" % ndims
+
+    win = [10] * ndims
+    sum_filt = torch.ones([1, 1, *win])
+    pad_no = math.floor(win[0] / 2)
+
+    if ndims == 1:
+        stride = (1)
+        padding = (pad_no)
+    elif ndims == 2:
+        stride = (1, 1)
+        padding = (pad_no, pad_no)
+    else:
+        stride = (1, 1, 1)
+        padding = (pad_no, pad_no, pad_no)
+
+    conv_fn = getattr(F, 'conv%dd' % ndims)
+    I2 = I * I
+    J2 = J * J
+    IJ = I * J
+
+    I_sum = conv_fn(I, sum_filt, stride=stride, padding=padding)
+    J_sum = conv_fn(J, sum_filt, stride=stride, padding=padding)
+    I2_sum = conv_fn(I2, sum_filt, stride=stride, padding=padding)
+    J2_sum = conv_fn(J2, sum_filt, stride=stride, padding=padding)
+    IJ_sum = conv_fn(IJ, sum_filt, stride=stride, padding=padding)
+
+    win_size = np.prod(win) #* 3
+    u_I = I_sum / win_size
+    u_J = J_sum / win_size
+
+    cross = IJ_sum - u_J * I_sum - u_I * J_sum + u_I * u_J * win_size
+    I_var = I2_sum - 2 * u_I * I_sum + u_I * u_I * win_size
+    J_var = J2_sum - 2 * u_J * J_sum + u_J * u_J * win_size
+
+    cc = cross * cross / (I_var * J_var + 1e-5)
+
+    return -torch.mean(cc)
+
+
+
+def to_numpy_image(x):
+    return (x.detach().permute(0,2,3,1).numpy()*255).astype(np.uint8)
+
+
+transform1 = transforms.Compose([
+    transforms.ToTensor(),  # range [0, 255] -> [0.0,1.0] and convert [H,W,C] to [C,H,W]
+])
+
+img = cv2.imread('backbox_img_1.jpg', 0)
+src = transform1(img) # 归一化到 [0.0,1.0],并转成[C,H,W]
+src = src.unsqueeze(0)
+#src = src.repeat(3, 1, 1, 1)
+
+img = cv2.imread('backbox_img_2.jpg', 0)
+target = transform1(img)
+target = target.unsqueeze(0)
+#target = target.repeat(3, 1, 1, 1)
+
+c_dst = tps.torch.uniform_grid((10,10)).view(-1, 2)
+print(c_dst.shape)  # (4, 2)
+print(c_dst)
+theta = torch.zeros(src.shape[0], (c_dst.shape[0] + 3), 2, requires_grad=True)  # (2, 6, 2) 6 = 4 control points +2
+
+print(theta.shape)
+size = src.shape
+print(size)
+H, W = src.shape[-2:]
+opt = optim.Adam([theta], lr=1e-3, weight_decay=5e-5)
+scale = src.new_tensor([W, H])
+import matplotlib.cm as cm
+colors = cm.rainbow(np.linspace(0, 1, c_dst.shape[0]))
+for i in range(4000):
+    opt.zero_grad()
+
+    grid = tps.torch.tps_grid(theta, torch.tensor(c_dst), size)
+    warped = F.grid_sample(src, grid)
+    # loss = F.mse_loss(target, warped) + 0.1*F.mse_loss(warped, src)
+    loss = ncc_loss(target, warped) # + grad(warped)
+    # loss = F.l1_loss(warped, target) #+ grad(warped) #+ F.mse_loss(warped, src)
+    loss.backward()
+    opt.step()
+
+    if i % 50 == 0:
+        print(i, loss.item())
+
+        src_np = to_numpy_image(src)
+        dst_np = to_numpy_image(target)
+        final_np = to_numpy_image(warped)
+
+        fig, axs = plt.subplots(src.shape[0], 3, figsize=(12, 6))
+
+
+
+        for j in range(src.shape[0]):
+
+            xy_src = tps.torch.tps_sparse(theta, c_dst, c_dst) * scale.view(1,1,-1)
+            xy_src = xy_src.detach().numpy()
+
+
+            axs[0].imshow(src_np[j], cmap='gray', vmin=0, vmax=255)
+            axs[0].scatter(xy_src[j, :, 0], xy_src[j, :, 1], c=colors, s=10)
+            axs[1].imshow(dst_np[j], cmap='gray', vmin=0, vmax=255)
+            axs[2].imshow(final_np[j], cmap='gray', vmin=0, vmax=255)
+            axs[0].set_title('source')
+            axs[1].set_title('target')
+            axs[2].set_title('result')
+
+        plt.savefig('result_imgs/trial2/onemoreCtrl_backbox_mse_%d.jpg'%i)
+        plt.cla()
+
+
+
+    
+ 
