@@ -205,7 +205,21 @@
 20. Constructing Self-motivated Pyramid Curriculums for Cross-Domain Semantic Segmentation: A Non-Adversarial Approach
     
 
-17. Domain Randomization and Pyramid Consistency - Generalization without Accessing Target Domain Data.
+21. Domain Randomization and Pyramid Consistency - Generalization without Accessing Target Domain Data.
+
+22. RobustNet: Improving Domain Generalization in Urban-Scene Segmentation via Instance Selective Whitening
+IBN-net: DG problem can be addressed by exploiting instance normalization, which just standardizes the features while not considering the correlation between channels. However, feature covariance contains domain-specific style. Whitening transformation is a technique that removes the feature correlation.
+
+Applying whitening for the whole feature may eliminate domain-specific style and domain-invariant content at the same time. We propose an instance selective whitening loss
+that alleviates the limitations of the existing whitening transformation.
+
+Specifically, we selectively removes only those features covariances that respond sensitively to photometric augmentation。
+
+23. MetaCorrection: Domain-aware Meta Loss Correction for Unsupervised Domain Adaptation in Semantic Segmentation
+Self-training methods assign pixel-wise pseudo labels according to confidence score or uncertainty, providing extra supervision.   
+However, the noise in the pseudo labels may severely hamper the generalization (overfit to the noise data), confidence threshold is sub-optimal solution.   
+We tend to model the noise distribution by noise trasnsition matrix (NTM). T is a C-by-C matrix which specifies the probability of ground truth label j flipping to noisy label k.
+
 
 
 # Semantic Part Segmentation
