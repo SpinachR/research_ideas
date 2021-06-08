@@ -63,6 +63,8 @@ Local Deformable 3D Reconstruction with Cartan’s Connections
 
 Using Shading and a 3D Template to Reconstruct Complex Surface Deformations
 
+Robust, Real-time, Dense and Deformable 3D Organ Tracking in Laparoscopic Videos
+
 The Isowarp: The Template-Based Visual Geometry of Isometric Surfaces
 
 Model-Based Real-Time Non-Rigid Tracking
