@@ -23,7 +23,9 @@
 
 12. zhang bo -- [image translation](https://bo-zhang.me/)
 
-13. huang gao -- [Tsinghua](http://www.gaohuang.net/)
+13. huang gao -- [Tsinghua Dynamic NN](http://www.gaohuang.net/)
+
+14. Liu shuaicheng -- [Optical Flow](http://www.liushuaicheng.org/)
 
 # Websites
 1. NVIDIA Research Projects [github](https://github.com/NVlabs)
