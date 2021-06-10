@@ -22,3 +22,33 @@ Q\*K^T: Q和K的相似程度，softmax将相似向量变成概率。最后和V�
 # 解码器
 
 解码器的多头注意力机制中有个masked multi-head attention（意思是需要对当前单词和之后的单词做mask）。因为预测的时候，没有后面的单词信息，所以要在训练的时候把之后的单词遮住。
+
+
+
+https://www.bilibili.com/video/BV1Xp4y1b7ih/?spm_id_from=333.788.recommend_more_video.-1
+李宏毅 （https://www.youtube.com/watch?v=n9TlOhRjYoc）
+# Self-attention
+
+Input may change length (every word can be regarded as embedding, *word embedding*)
+
+audio: need a fixed window (25ms, stride 10ms), the audio in a fixed window can be transformed to a vector (400 sample points, 39-dim MFCC, 80-dim filter bank output)
+
+Graph: is also set of vector, each node as a vector.
+
+**Self-attention**: input: a set of vector; output: the same number of vector. It can consider all the information in a sequence.   
+We can apply a lot of self-attention layers, i.e., self-attention + fc + self-attention + fc +... (fc focuses on current vector information)
+
+
+(Query)Q=W^q \* A  |  (Key)K=W^k \* A  |   (Value)V=W^v \* A  
+
+# Transformer
+
+Autoregressive: produce item one-by-one      
+A seq2seq model: the output length is determined by model. Thus, during decoder, there is a special token (for BEGIN and END)    
+Decoder: contains MASK self-attention (后面的地方不计算attention)
+
+Non-Autoregressive: produce the sequence at the same time (Input multiple BEGIN tokens, output the corresponding items)    
+How to decide the output length for NAT decoder: use another predictor for output length, or ignore tokens after the END token.
+
+
+
