@@ -34,3 +34,4 @@ We provide a set of 25,000 highly polar movie reviews for training, and 25,000 f
 1. https://paperswithcode.com/sota/sentiment-analysis-on-sst-5-fine-grained
 2. https://paperswithcode.com/sota/sentiment-analysis-on-sst-2-binary
 3. https://paperswithcode.com/sota/sentiment-analysis-on-imdb
+4. https://github.com/A2Zadeh/ACL21_MultimodalAIWorkshop
