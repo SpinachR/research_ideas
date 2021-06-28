@@ -52,3 +52,33 @@ How to decide the output length for NAT decoder: use another predictor for outpu
 
 
 
+# Embeddings from Language Model (ELMO)
+RNN-based language models (trained from lots of sentences without labels): it trained to predict the next token.
+
+Bidirectional RNN: obtain the embedding by concatenating the two RNN's embedding.
+
+# Bidirectional Encoder Representations from Transformers (BERT)
+
+Encoder of Transformer
+
+Bert: each word has one embedding
+
+Masked LM: replace 15% tokens with [mask] token; | Next Sentence Prediction: [SEP] the boundary of two sentences, predict whether the two input sentences are concatenated or not. There is a special token [CLS] at the beginning indicating that this position's embedding will be used for classification.
+
+Next Sentence Prediction is not helpful (This is an easy task). Thus, robustly optimized BERT approach (RoBERTa) is proposed. Sentence order prediction (SOP) used in AlBERT 
+
+Applications (Extraction-based Question Answering): Given one paragraph first, given a Query. Output two integers, which indicates the index of tokens in the paragraph.   
+
+For BERT, input: [CLS] + Query + [SEP] + Document. Output: there are two vectors' (learned from scatch), will be used for dot product with Document's embedding. The largest vector's index is the output.
+
+ERNIE: mask the sub-paragraphs instead for Chinese.
+
+Multilingual BERT: trained on 104 languages (after pre-trained on English classification, it can be used on Chinese data)
+
+# Generative Pre-Training (GPT)
+
+GPT: Decoder of the Transformer (Predict the next word)
+
+Good at zero-shot Learning: Reading Comprehension (Input: paragraph, A:, next predicted words will be the results)  | summarization (Input: Paragraph, TL;DR:), next predicted words will be the results | Translation
+
+
