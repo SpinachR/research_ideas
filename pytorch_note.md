@@ -86,3 +86,22 @@ python -m torch.distributed.launch --nproc_per_node=3 distributed_train.py \
 A test: https://github.com/AndyYuan96/pytorch-distributed-training/blob/master/multi_gpu_distributed.py
 
 https://www.zhihu.com/question/67209417  pytorch bug (load to the model to cpu first)
+
+
+# Transformer 
+https://towardsdatascience.com/divide-hugging-face-transformers-training-time-by-2-or-more-21bf7129db9q-21bf7129db9e  (Uniform length batching for reduing the training time)
+
+Training NN on a batch of sequences requires them to have the exact same length to build the batch matrix representation.   
+Dynamic Padding: we limit the number of added pad tokens to reach the length of the longest sequence of each mini batch instead of a fixed value set for the whole set.    
+Uniform length batching: we generate batches made of similar length sequences, so we avoid extreme cases where most sequences in the mini batch are short and we are required to add lots of pad tokens to each of them because few of them are very long.
+
+https://www.bilibili.com/video/BV1sU4y1G7CN (general variants)   
+Module-level: positional encoding, attentions (with prior), multi-head   
+Pre-trained Models: encoder, decoder,   
+Applications: Text, Vision, Audio, multi-modal, etc,
+
+
+
+
+
+
