@@ -1,3 +1,4 @@
+
 1. DA with multiple sources.
 
 2. DA with scarce data or imbalanced data. Consider generative transfer learning. Adaptation on C and G. Adversarial Style Mining for One-Shot Unsupervised Domain Adaptation
@@ -38,4 +39,6 @@
 
 21. Train prediction models and [GAN models, conditions (tell which domain belongs to), features distributions] on different sites (domain distributions are different), then distillation for multiple times. (multiple models distillation (fusion): give a lambda weight for the model_1, (1-lambda) weight for model_2, change lambda from 0-1 to distill multiple times. Each time, there will be a new model_1 and model_2, replace the older version) This operation aims for very different data distributions during model fusion. This is on face datasets, we only need to obtain the features.
 
-33. ELASTIC deformation for spatial invariance (https://github.com/allenai/elastic) (https://zhuanlan.zhihu.com/p/83801998) (http://link.zhihu.com/?target=https%3A//github.com/lxtGH/OctaveConv_pytorch) (https://www.yuque.com/lart/architecture/vw6t5t)
+22. ELASTIC deformation for spatial invariance (https://github.com/allenai/elastic) (https://zhuanlan.zhihu.com/p/83801998) (http://link.zhihu.com/?target=https%3A//github.com/lxtGH/OctaveConv_pytorch) (https://www.yuque.com/lart/architecture/vw6t5t)
+
+23. Interpretable Classifications with Convolutional Dynamic Alignment Networks
