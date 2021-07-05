@@ -42,3 +42,5 @@
 22. ELASTIC deformation for spatial invariance (https://github.com/allenai/elastic) (https://zhuanlan.zhihu.com/p/83801998) (http://link.zhihu.com/?target=https%3A//github.com/lxtGH/OctaveConv_pytorch) (https://www.yuque.com/lart/architecture/vw6t5t)
 
 23. Interpretable Classifications with Convolutional Dynamic Alignment Networks
+
+24. http://mir.dei.uc.pt/index.html (for music topic)
