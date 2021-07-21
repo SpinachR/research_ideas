@@ -63,3 +63,5 @@
 17. camera matrix explanation -- [display](https://ksimek.github.io/2012/08/22/extrinsic/)
 
 18. some interesting works --  [nv-tlabs](https://github.com/nv-tlabs)
+
+19. some tutorials about bert, knn, dbscan, traditional ml -- [traditional ml](http://mccormickml.com/archive/)
