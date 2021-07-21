@@ -44,3 +44,5 @@
 23. Interpretable Classifications with Convolutional Dynamic Alignment Networks
 
 24. http://mir.dei.uc.pt/index.html (for music topic)
+
+25. wav2vec, x-vector (https://maelfabien.github.io/machinelearning/wav2vec/#4-self-training-and-pre-training-are-complementary-for-speech-recognition)
