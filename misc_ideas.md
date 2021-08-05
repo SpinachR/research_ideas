@@ -46,3 +46,5 @@
 24. http://mir.dei.uc.pt/index.html (for music topic)
 
 25. wav2vec, x-vector (https://maelfabien.github.io/machinelearning/wav2vec/#4-self-training-and-pre-training-are-complementary-for-speech-recognition)
+
+26. music -- http://mir.dei.uc.pt/downloads.html  (https://www.music-ir.org/nema_out/mirex2020/results/act/mood_report/summary.html)
