@@ -48,3 +48,5 @@
 25. wav2vec, x-vector (https://maelfabien.github.io/machinelearning/wav2vec/#4-self-training-and-pre-training-are-complementary-for-speech-recognition)
 
 26. music -- http://mir.dei.uc.pt/downloads.html  (https://www.music-ir.org/nema_out/mirex2020/results/act/mood_report/summary.html) EMOPIA: A MULTI-MODAL POP PIANO DATASET FOR EMOTION RECOGNITION AND EMOTION-BASED MUSIC GENERATION
+
+27. Gradient-Centralization | Big Batch Size needs larger lr with warmup | Lars/Lamb optimization for the suboptimal performance with big batch size (https://blog.csdn.net/u011984148/article/details/112792156)
