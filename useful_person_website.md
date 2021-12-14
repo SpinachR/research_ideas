@@ -27,6 +27,8 @@
 
 14. Liu shuaicheng -- [Optical Flow](http://www.liushuaicheng.org/)
 
+15. Hakab Bilen -- [Multi-Domain](https://homepages.inf.ed.ac.uk/hbilen/)
+
 # Websites
 1. NVIDIA Research Projects [github](https://github.com/NVlabs)
 
